@@ -1,0 +1,6 @@
+<div class="jumbotron black col-lg-12" style="padding-top:0px">
+	<h2 class="cyan-text text-accent-3;font-weight:900"><%= gettext "Welcome to %{name}", name: "Bandstock" %></h2>
+  	<p class="pink-text text-accent-4" style="padding-bottom:20px;font-weight:700">The beautiful game that funds music</p>
+	<img src="/images/colorgrid0.png"></img> 
+</div>
+
