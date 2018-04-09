@@ -28,6 +28,14 @@ defmodule BandstockWeb.Router do
     get "/users/:id", UserController, :show
     put "/users/:id", UserController, :update
     delete "/users/:id", UserController, :delete
+
+    get "/tiles", TileController, :index
+    get "/tiles/new", TileController, :new
+    post "/tiles", TileController, :create
+    get "/tiles/:id/edit", TileController, :edit
+    get "/tiles/:id", TileController, :show
+    put "/tiles/:id", TileController, :update
+    delete "/tiles/:id", TileController, :delete
   end
 
 

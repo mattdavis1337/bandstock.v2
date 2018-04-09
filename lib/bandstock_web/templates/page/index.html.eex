@@ -2,5 +2,7 @@
 	<h2 class="cyan-text text-accent-3;font-weight:900"><%= gettext "Welcome to %{name}", name: "Bandstock" %></h2>
   	<p class="pink-text text-accent-4" style="padding-bottom:20px;font-weight:700">The beautiful game that funds music</p>
 	<img src="/images/colorgrid0.png"></img> 
+	
 </div>
+<canvas id="bandstockCanvas" width="500" height="300"></canvas>
 

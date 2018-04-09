@@ -12,10 +12,65 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <script src="<%= static_path(@conn, "/js/pixi.min.js") %>"></script>
   </head>
 
-  <body class="black">
+  <body class="black" onload="init()">
+    <script>
+      function init(){
+
+        let Application = PIXI.Application,
+            loader = PIXI.loader,
+            resources = PIXI.loader.resources,
+            Sprite = PIXI.Sprite,
+            TextureCache = PIXI.utils.TextureCache,
+            Rectangle = PIXI.Rectangle;
+        
+        let app = new Application({ 
+            width: 1024, 
+            height: 256,                       
+            antialias: true, 
+            transparent: false, 
+            resolution: 1
+          }
+        );
+
+        
+        let Resources = PIXI.loader.resources;
+
+        //Add the canvas that Pixi automatically created for you to the HTML document
+        document.body.appendChild(app.view);
+
+        //load an image and run the `setup` function when it's done
+        PIXI.loader
+          .add("images/colorgrid0.png")
+          .load(setup);
+
+        //This `setup` function will run when the image has loaded
+        function setup() {
+
+          let texture = TextureCache["images/colorgrid0.png"];
+
+          let rectangle = new Rectangle(0, 0, 100, 168);
+          texture.frame = rectangle;
+
+          let tile = new Sprite(texture)
+          tile.x = 32;
+          tile.y = 32;
+          //Create the cat sprite
+          //let cat = new PIXI.Sprite(Resources["images/colorgrid0.png"].texture);
+          
+          //Add the cat to the stage
+          app.stage.addChild(tile);
+
+          //renderer.render(stage)
+        }
+
+
+      }
+
+
+    </script>
     <div class="container">
       <header>
         <div class="row">
@@ -62,11 +117,5 @@
     </div> <!-- /container -->
   
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-
-
-
-    
-    
-  </script>
   </body>
 </html>

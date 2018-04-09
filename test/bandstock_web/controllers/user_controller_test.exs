@@ -7,6 +7,8 @@ defmodule BandstockWeb.UserControllerTest do
   @update_attrs %{email: "some updated email", handle: "some updated handle", provider: "some updated provider", token: "some updated token"}
   @invalid_attrs %{email: nil, handle: nil, provider: nil, token: nil}
 
+
+
   def fixture(:user) do
     {:ok, user} = Account.create_user(@create_attrs)
     user

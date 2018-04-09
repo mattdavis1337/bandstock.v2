@@ -1,0 +1,23 @@
+<h2>Show Tile</h2>
+
+<ul>
+
+  <li>
+    <strong>Hash:</strong>
+    <%= @tile.hash %>
+  </li>
+
+  <li>
+    <strong>Location:</strong>
+    <%= @tile.location %>
+  </li>
+
+  <li>
+    <strong>Image:</strong>
+    <%= @tile.image %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: tile_path(@conn, :edit, @tile) %></span>
+<span><%= link "Back", to: tile_path(@conn, :index) %></span>
