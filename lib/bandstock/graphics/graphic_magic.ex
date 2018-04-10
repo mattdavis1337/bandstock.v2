@@ -8,7 +8,15 @@ defmodule Bandstock.GraphicMagic do
 		
 		folder = "assets/static/images/gridcolors/"
 
-		
+		magenta_off = %ColorUtils.HSV{hue: 321, saturation: 100, value: 60.0}
+		red_off = %ColorUtils.HSV{hue: 0, saturation: 100, value: 60.0}
+		orange_off = %ColorUtils.HSV{hue: 25, saturation: 100, value: 60.0}
+		yellow_off = %ColorUtils.HSV{hue: 60, saturation: 100, value: 60.0}
+		green_off = %ColorUtils.HSV{hue: 115, saturation: 100, value: 60.0}
+		teal_off = %ColorUtils.HSV{hue: 170, saturation: 100, value: 60.0}
+		blue_off = %ColorUtils.HSV{hue: 200, saturation: 100, value: 60.0}
+		indigo_off = %ColorUtils.HSV{hue: 240, saturation: 100, value: 60.0}
+		purple_off =  %ColorUtils.HSV{hue: 280, saturation: 100, value: 60.0}
 
 		magenta_0 = %ColorUtils.HSV{hue: 321, saturation: 100, value: 85.0}
 		red_0 = %ColorUtils.HSV{hue: 0, saturation: 100, value: 85.0}
@@ -79,7 +87,7 @@ defmodule Bandstock.GraphicMagic do
 		#hueColors = [magenta, red, orange, yellow, green, teal, blue, indigo, purple]
 		#hueColors = [magenta2, red2, orange2, yellow2, green2, teal2, blue2, indigo2, purple2]
 
-		sheet = %SpriteSheet{countX: 9, countY: 4, egd: :egd.create(300*9, 400*4)}
+		sheet = %SpriteSheet{countX: 9, countY: 5, egd: :egd.create(300*9, 400*5)}
 
 
 		place_tile(sheet, to_rgb(magenta_0), 0, 0)
@@ -118,6 +126,15 @@ defmodule Bandstock.GraphicMagic do
 		place_tile(sheet, to_rgb(blue_3), 6, 3)
 		place_tile(sheet, to_rgb(indigo_3), 7, 3)
 		place_tile(sheet, to_rgb(purple_3), 8, 3)
+		place_tile(sheet, to_rgb(magenta_off), 0, 4)
+		place_tile(sheet, to_rgb(red_off), 1, 4)
+		place_tile(sheet, to_rgb(orange_off), 2, 4)
+		place_tile(sheet, to_rgb(yellow_off), 3, 4)
+		place_tile(sheet, to_rgb(green_off), 4, 4)
+		place_tile(sheet, to_rgb(teal_off), 5, 4)
+		place_tile(sheet, to_rgb(blue_off), 6, 4)
+		place_tile(sheet, to_rgb(indigo_off), 7, 4)
+		place_tile(sheet, to_rgb(purple_off), 8, 4)
 		|> render_sprite_sheet("sheet1")
 
 		place_tile(sheet, to_rgb(magenta2), 0, 0)

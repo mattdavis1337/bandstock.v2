@@ -28,7 +28,7 @@
         
         let app = new Application({ 
             width: 1024, 
-            height: 256,                       
+            height: 800,                       
             antialias: true, 
             transparent: false, 
             resolution: 1
@@ -43,25 +43,33 @@
 
         //load an image and run the `setup` function when it's done
         PIXI.loader
-          .add("images/colorgrid0.png")
+          .add("images/sheet1.png")
           .load(setup);
 
         //This `setup` function will run when the image has loaded
         function setup() {
 
-          let texture = TextureCache["images/colorgrid0.png"];
+          let texture = TextureCache["images/sheet1.png"];
 
-          let rectangle = new Rectangle(0, 0, 100, 168);
-          texture.frame = rectangle;
+          let magenta_rect = new Rectangle(0, 0, 300, 400);
+          let red_rect = new Rectangle(300, 0, 300, 400);
+          texture.frame = magenta_rect;
 
-          let tile = new Sprite(texture)
-          tile.x = 32;
-          tile.y = 32;
+          let magenta_tile = new Sprite(texture);
+          magenta_tile.x = 32;
+          magenta_tile.y = 32;
+          app.stage.addChild(magenta_tile);
+
+          texture.frame = red_rect;
+          let red_tile = new Sprite(texture);
+          red_tile.x = 337;
+          red_tile.y = 32;
           //Create the cat sprite
           //let cat = new PIXI.Sprite(Resources["images/colorgrid0.png"].texture);
           
           //Add the cat to the stage
-          app.stage.addChild(tile);
+          
+          app.stage.addChild(red_tile);
 
           //renderer.render(stage)
         }
