@@ -17,66 +17,259 @@
 
   <body class="black" onload="init()">
     <script>
-      function init(){
 
-        let Application = PIXI.Application,
+      let app;
+      let sprites = {}
+      let blues;
+      let scaling = .25;
+      let Application = PIXI.Application,
             loader = PIXI.loader,
             resources = PIXI.loader.resources,
             Sprite = PIXI.Sprite,
             TextureCache = PIXI.utils.TextureCache,
-            Rectangle = PIXI.Rectangle;
+            Rectangle = PIXI.Rectangle,
+            Resources = PIXI.loader.resources;
+      
+      function init(){
         
-        let app = new Application({ 
-            width: 1024, 
-            height: 800,                       
+        app = new Application({ 
+            width: 1200, 
+            height: 1800,                       
             antialias: true, 
             transparent: false, 
             resolution: 1
           }
         );
 
-        
-        let Resources = PIXI.loader.resources;
+        document.getElementById('splash-screen').appendChild(app.view);
+        app.stop();
+
 
         //Add the canvas that Pixi automatically created for you to the HTML document
-        document.body.appendChild(app.view);
+        
 
         //load an image and run the `setup` function when it's done
         PIXI.loader
-          .add("images/sheet1.png")
+          .add("images/bandstockTileSheet2.png")
+          .add("spritesheet", "images/bandstockTileSheet2.json")
           .load(setup);
-
-        //This `setup` function will run when the image has loaded
-        function setup() {
-
-          let texture = TextureCache["images/sheet1.png"];
-
-          let magenta_rect = new Rectangle(0, 0, 300, 400);
-          let red_rect = new Rectangle(300, 0, 300, 400);
-          texture.frame = magenta_rect;
-
-          let magenta_tile = new Sprite(texture);
-          magenta_tile.x = 32;
-          magenta_tile.y = 32;
-          app.stage.addChild(magenta_tile);
-
-          texture.frame = red_rect;
-          let red_tile = new Sprite(texture);
-          red_tile.x = 337;
-          red_tile.y = 32;
-          //Create the cat sprite
-          //let cat = new PIXI.Sprite(Resources["images/colorgrid0.png"].texture);
-          
-          //Add the cat to the stage
-          
-          app.stage.addChild(red_tile);
-
-          //renderer.render(stage)
-        }
-
-
       }
 
+      //This `setup` function will run when the image has loaded
+      function setup() {
+        let speed = 3;
+        
+
+        var sprites = new Array(5);
+        for (var i = 0; i <= 15; i++) {
+          sprites[i] = new Array(15);
+        }
+
+        var colors = new Array(15);
+        /*colors[0] = "magenta";
+        colors[1] = "red";
+        colors[2] = "orange";
+        colors[3] = "yellow";
+        colors[4] = "green";
+        colors[5] = "green";
+        colors[6] = "teal";
+        colors[7] = "blue";
+        colors[8] = "purple";
+        colors[9] = "magenta";*/
+        colors[0] = "magenta";
+        colors[1] = "red";
+        colors[2] = "orange";
+        colors[3] = "yellow";
+        colors[4] = "green";
+        colors[5] = "teal";
+        colors[6] = "blue";
+        colors[7] = "purple";
+        colors[8] = "blue";
+        colors[9] = "teal";
+        colors[10] = "green";
+        colors[11] = "yellow";
+        colors[12] = "orange";
+        colors[13] = "red";
+        colors[14] = "magenta";
+        
+        let total_width = (colors.length * (300*scaling));
+
+        
+        for(var i = 0; i < colors.length; i++){
+          for(var j = 0; j < 5; j++){
+          cur_sprite = sprites[i][j] = load_tile(colors[i], 5);
+          init_sprite_animation(cur_sprite, speed*(i+j+1)/6);
+          cur_sprite.x = (app.screen.width/2) - total_width/2 + i*cur_sprite.width + i*2;
+          cur_sprite.y = cur_sprite.height/2 + j*cur_sprite.height + j*2;
+          cur_sprite.play();
+          //app.stage.addChild(cur_sprite);
+          }
+        }
+        /*var i = 8;
+        for(var j = 0; j < 5; j++){
+          cur_sprite = sprites[i][j] = load_tile("magenta", 5);
+          init_sprite_animation(cur_sprite, speed);
+          cur_sprite.x = (app.screen.width/2) - total_width/2 + i*cur_sprite.width + i*2;
+          cur_sprite.y = cur_sprite.height/2 + j*cur_sprite.height + j*2;
+          cur_sprite.play();
+          //app.stage.addChild(cur_sprite);
+        }*/
+
+        for(var i = 0; i < colors.length; i++){
+          for(var j = 0; j< 5; j++){
+            app.stage.addChild(sprites[i][j]);
+          }
+        }
+
+        /*magenta_sprite = sprites[0][0] = load_tile("magenta", 5);
+        init_sprite_animation(magenta_sprite, speed);                          
+        magenta_sprite.x = (app.screen.width/2) - total_width/2;
+        magenta_sprite.y = 100;
+        magenta_sprite.play();
+        app.stage.addChild(magenta_sprite);
+
+        red_sprite = sprites[0][1] = load_tile("red", 5);
+        init_sprite_animation(red_sprite, speed);                          
+        red_sprite.x = magenta_sprite.x+(red_sprite.width+2);
+        red_sprite.y = magenta_sprite.y;
+        red_sprite.play();
+        app.stage.addChild(red_sprite);
+
+        orange_sprite = sprites[0][2] = load_tile("orange", 5);
+        init_sprite_animation(orange_sprite, speed);                          
+        orange_sprite.x = red_sprite.x+(orange_sprite.width+2);
+        orange_sprite.y = magenta_sprite.y;
+        orange_sprite.play();
+        app.stage.addChild(orange_sprite);
+
+        yellow_sprite = sprites[0][3] = load_tile("yellow", 5);
+        init_sprite_animation(yellow_sprite, speed);                          
+        yellow_sprite.x = orange_sprite.x+(yellow_sprite.width+2);
+        yellow_sprite.y = magenta_sprite.y;
+        yellow_sprite.play();
+        app.stage.addChild(yellow_sprite);
+
+        green_sprite = sprites[0][4] = load_tile("green", 5);
+        init_sprite_animation(green_sprite, speed);                          
+        green_sprite.x = yellow_sprite.x+(green_sprite.width+2);
+        green_sprite.y = magenta_sprite.y;
+        green_sprite.play();
+        app.stage.addChild(green_sprite);
+
+        teal_sprite = sprites[0][5] = load_tile("teal", 5);
+        init_sprite_animation(teal_sprite, speed);                          
+        teal_sprite.x = green_sprite.x+(teal_sprite.width+2);
+        teal_sprite.y = magenta_sprite.y;
+        teal_sprite.play();
+        app.stage.addChild(teal_sprite);
+
+        blue_sprite = sprites[0][6] = load_tile("blue", 5);
+        init_sprite_animation(blue_sprite, speed);                          
+        blue_sprite.x = teal_sprite.x+(blue_sprite.width+2);
+        blue_sprite.y = magenta_sprite.y;
+        blue_sprite.play();
+        app.stage.addChild(blue_sprite);
+
+        purple_sprite = sprites[0][7] = load_tile("purple", 5);
+        init_sprite_animation(purple_sprite, speed);                          
+        purple_sprite.x = blue_sprite.x+(purple_sprite.width+2);
+        purple_sprite.y = magenta_sprite.y;
+        purple_sprite.play();
+        app.stage.addChild(purple_sprite);
+
+        magenta_sprite2 = sprites[0][8] = load_tile("magenta", 5);
+        init_sprite_animation(magenta_sprite2, speed);                          
+        magenta_sprite2.x = purple_sprite.x+magenta_sprite2.width+2;
+        magenta_sprite2.y = magenta_sprite.y;
+        magenta_sprite2.play();
+        app.stage.addChild(magenta_sprite2);*/
+
+        app.start();
+      }
+
+      function load_tile(color, frame_count){
+        textures = [];
+        
+        for (i = 0; i < frame_count; i++){
+          var framekey = color + ' ' + i + '.png';
+          var texture = PIXI.Texture.fromFrame(framekey);
+          var time = resources.spritesheet.data.frames[framekey].duration;
+          textures.push({texture, time});
+        }
+        
+        return new PIXI.extras.AnimatedSprite(textures);
+      }
+
+      function init_sprite_animation(sprite, speedIn){
+        sprite.animationSpeed = speedIn;
+        sprite.anchor.set(0.5);
+        sprite.scale.set(scaling);
+        return sprite;
+      }
+
+        /*blue_off = new PIXI.Sprite(
+          PIXI.loader.resources["images/bandstockTileSheet.json"].textures["blue_off.png"]
+        );
+        blue_off.x = 668;
+        blue_off.y = 50;
+        //blue_off.y = app.stage.height /2 - blue_off.height /2;        
+        //app.stage.addChild(blue_off);
+        blue_animation.push(blue_off);
+
+        blue_0 = new PIXI.Sprite(
+          PIXI.loader.resources["images/bandstockTileSheet.json"].textures["blue_0.png"]
+        );
+        blue_0.x = 668;
+        blue_0.y = 50;
+        //blue_0.y = app.stage.height /2 - blue_0.height /2;        
+        app.stage.addChild(blue_0);
+        blue_animation.push(blue_0);
+
+        blue_1 = new PIXI.Sprite(
+          PIXI.loader.resources["images/bandstockTileSheet.json"].textures["blue_1.png"]
+        );
+        blue_1.x = 668;
+        blue_1.y = 50;
+        //blue_1.y = app.stage.height /2 - blue_1.height /2;        
+        app.stage.addChild(blue_1);
+        blue_animation.push(blue_1);
+
+        blue_2 = new PIXI.Sprite(
+          PIXI.loader.resources["images/bandstockTileSheet.json"].textures["blue_2.png"]
+        );
+        blue_2.x = 668;
+        blue_2.y = 50;
+        //blue_1.y = app.stage.height /2 - blue_1.height /2;        
+        app.stage.addChild(blue_2);
+        blue_animation.push(blue_2);
+
+        blue_3 = new PIXI.Sprite(
+          PIXI.loader.resources["images/bandstockTileSheet.json"].textures["blue_3.png"]
+        );
+        blue_3.x = 668;
+        blue_3.y = 50;
+        //blue_1.y = app.stage.height /2 - blue_1.height /2;        
+        app.stage.addChild(blue_3);
+        blue_animation.push(blue_3);
+        
+        blues = new PIXI.AnimatedSprite(blue_animation);*/
+
+      
+
+      //function gameLoop() {
+        //Call this `gameLoop` function on the next screen refresh
+        //(which happens 60 times per second)
+        //requestAnimationFrame(gameLoop);
+
+        //Move the cat
+        //for(var i = 0; i < sprites.length; i++){
+        //  console.log(sprites[i]);
+        //}
+      //}
+
+//Start the loop
+//gameLoop();
+      
 
     </script>
     <div class="container">

@@ -1,5 +1,6 @@
 defmodule Bandstock.Identicon do
   alias Bandstock.Identicon.Image
+  
   def main(input) do
     input
     |> hash_input
@@ -8,7 +9,7 @@ defmodule Bandstock.Identicon do
     |> filter_odd_squares
     |> build_pixel_map
     |> draw_image
-    #|> save_image("identicon")
+    |> save_image("identicon")
   end
 
   def save_image(image, filename) do

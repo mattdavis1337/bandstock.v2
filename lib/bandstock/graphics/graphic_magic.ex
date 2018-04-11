@@ -28,7 +28,7 @@ defmodule Bandstock.GraphicMagic do
 		indigo_0 = %ColorUtils.HSV{hue: 240, saturation: 100, value: 85.0}
 		purple_0 =  %ColorUtils.HSV{hue: 280, saturation: 100, value: 85.0}
 
-		hueColors = [magenta_0, red_0, orange_0, yellow_0, green_0, teal_0, blue_0, indigo_0, purple_0]
+		
 
 		index = 0;
 		#Enum.each(hueColors, fn(x) -> 
@@ -89,8 +89,71 @@ defmodule Bandstock.GraphicMagic do
 
 		sheet = %SpriteSheet{countX: 9, countY: 5, egd: :egd.create(300*9, 400*5)}
 
+		hueColors = [
+			%{name: "magenta 0", color: magenta_off}, 
+			%{name: "red 0", color: red_off}, 
+			%{name: "orange 0", color: orange_off}, 
+			%{name: "yellow 0", color: yellow_off}, 
+			%{name: "green 0", color: green_off}, 
+			%{name: "teal 0", color: teal_off}, 
+			%{name: "blue 0", color: blue_off}, 
+			%{name: "indigo 0", color: indigo_off}, 
+			%{name: "purple 0", color: purple_off},
 
-		place_tile(sheet, to_rgb(magenta_0), 0, 0)
+			%{name: "magenta 1", color: magenta_0}, 
+			%{name: "red 1", color: red_0}, 
+			%{name: "orange 1", color: orange_0}, 
+			%{name: "yellow 1", color: yellow_0}, 
+			%{name: "green 1", color: green_0}, 
+			%{name: "teal 1", color: teal_0}, 
+			%{name: "blue 1", color: blue_0}, 
+			%{name: "indigo 1", color: indigo_0}, 
+			%{name: "purple 1", color: purple_0}, 
+
+			%{name: "magenta 2", color: magenta_1},
+			%{name: "red 2", color: red_1},
+			%{name: "orange 2", color: orange_1},
+			%{name: "yellow 2", color: yellow_1},
+			%{name: "green 2", color: green_1},
+			%{name: "teal 2", color: teal_1},
+			%{name: "blue 2", color: blue_1},
+			%{name: "indigo 2", color: indigo_1},
+			%{name: "purple 2", color: purple_1},
+
+			%{name: "magenta 3", color: magenta_2},
+			%{name: "red 3", color: red_2},
+			%{name: "orange 3", color: orange_2},
+			%{name: "yellow 3", color: yellow_2},
+			%{name: "green 3", color: green_2},
+			%{name: "teal 3", color: teal_2},
+			%{name: "blue 3", color: blue_2},
+			%{name: "indigo 3", color: indigo_2},
+			%{name: "purple 3", color: purple_2},
+
+			%{name: "magenta 4", color: magenta_3},
+			%{name: "red 4", color: red_3},
+			%{name: "orange 4", color: orange_3},
+			%{name: "yellow 4", color: yellow_3},
+			%{name: "green 4", color: green_3},
+			%{name: "teal 4", color: teal_3},
+			%{name: "blue 4", color: blue_3},
+			%{name: "indigo 4", color: indigo_3},
+			%{name: "purple 4", color: purple_3},
+		]
+#			magenta_0, red_0, orange_0, yellow_0, green_0, teal_0, blue_0, indigo_0, purple_0,
+#			magenta_1, red_1, orange_1, yellow_1, green_1, teal_1, blue_1, indigo_1, purple_1,
+#			magenta_2, red_2, orange_2, yellow_2, green_2, teal_2, blue_2, indigo_2, purple_2,
+#			magenta_3, red_3, orange_3, yellow_3, green_3, teal_3, blue_3, indigo_3, purple_3
+#		]
+
+		Enum.each(hueColors, fn(x) -> 
+			draw_tile(%Image{filename: "gen/#{x.name}", height: 400, width: 300, color: to_rgb(x.color)}) |> render_image() end)
+
+
+		#image = %Image{filename: "magenta_off", height: 400, width: 300, color: {0, 14, 153}}
+		#draw_tile(%Image{filename: "magenta_1", height: 400, width: 300, color: {0, 14, 153}}) |> render_image()
+
+		place_tile(sheet, to_rgb(magenta_0), 0, 0)		
 		place_tile(sheet, to_rgb(red_0), 1, 0)
 		place_tile(sheet, to_rgb(orange_0), 2, 0)
 		place_tile(sheet, to_rgb(yellow_0), 3, 0)
@@ -163,8 +226,8 @@ defmodule Bandstock.GraphicMagic do
 					[28, 230, 252], [27, 184, 229], [28, 54, 230], 
 					[155, 22, 229]
 				]
-
-		
+		image = %Image{filename: "magenta0", height: 400, width: 300, color: {0, 14, 153}}
+		draw_tile(image) |> render_image()
 
 		#colors = Enum.with_index(colors)
 		#rainbow = Enum.with_index(rainbow)
@@ -178,6 +241,20 @@ defmodule Bandstock.GraphicMagic do
 		#end)
 
 		image = Identicon.main("hashgod")
+	end
+
+
+	def draw_tile(image) do
+		%Image{height: height, width: width, color: color, filename: filename} = image
+		new_image = :egd.create(width, height)
+		fill = :egd.color(color)
+		:egd.filledRectangle(new_image, {0, 0}, {width, height}, fill)
+
+		%Image{image | height: height, width: width, color: color, image: new_image}
+	end
+
+	def render_image(image) do
+		File.write("#{image.filename}.png", :egd.render(image.image))
 	end
 
 	def render_sprite_sheet(sprite_sheet, filename) do
@@ -200,6 +277,14 @@ defmodule Bandstock.GraphicMagic do
 		IO.inspect({red, green, blue})
 		{red, green, blue}
 	end
+
+	def to_string(hsv) do
+		rgb = ColorUtils.hsv_to_rgb(hsv)
+		%ColorUtils.RGB{red: red, blue: blue, green: green} = rgb
+
+	end
+
+	
 
 	def place_tile(sprite_sheet, color, x, y) do
 		height = 400
@@ -225,10 +310,12 @@ defmodule Bandstock.GraphicMagic do
 
 		image = get_file_name(%Image{}, index, color)
 		|> render_image()
+
+		#render_image
 		#|> save_image()
 
-		sprite_sheet = %SpriteSheet{}
-		place_image(sprite_sheet, image, 0, 0)
+		#sprite_sheet = %SpriteSheet{}
+		#place_image(sprite_sheet, image, 0, 0)
 
 
 		image
@@ -244,11 +331,11 @@ defmodule Bandstock.GraphicMagic do
 	end
 
 	def render_image(image) do
-		%Image{color: color} = image
-	    new_image = :egd.create(100, 168)
+		%Image{color: color, width: width, height: height} = image
+	    new_image = :egd.create(width, height)
 	    fill = :egd.color(color)
-	    black = :egd.color({0,0,0})
-	    :egd.filledRectangle(new_image, {0,0}, {250,250}, fill)
+	    #black = :egd.color({0,0,0})
+	    :egd.filledRectangle(new_image, {0,0}, {width,height}, fill)
 	    %Image{image | image: :egd.render(new_image)}
     end
 
