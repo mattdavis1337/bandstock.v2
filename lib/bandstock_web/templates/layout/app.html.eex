@@ -35,7 +35,7 @@
         
         app = new Application({ 
             width: 940, 
-            height: 1800,                       
+            height: 420,                       
             antialias: true, 
             transparent: false, 
             resolution: 1
