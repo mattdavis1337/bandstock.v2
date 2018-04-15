@@ -16,6 +16,6 @@ defmodule Bandstock.Account.User do
   def changeset(user, attrs \\ %{}) do
     user
     |> cast(attrs, [:handle, :email, :provider, :token])
-    |> validate_required([:email, :provider, :token])
+    |> validate_required([:handle, :email, :provider, :token])
   end
 end

@@ -98,7 +98,7 @@
         for(var i = 0; i < colors.length; i++){
           for(var j = 0; j < 5; j++){
             cur_sprite = sprites[i][j] = load_tile(colors[i], 5);
-            init_sprite_animation(cur_sprite, speed*(i+j+1)/6);
+            init_sprite_animation(cur_sprite, speed*(j+i+1)/6);
             console.log;
             cur_sprite.x = (i*cur_sprite.width+cur_sprite.width/2)+i*2;
             cur_sprite.y = cur_sprite.height/2 + j*cur_sprite.height + j*2;
@@ -297,11 +297,14 @@
             <ul class="right"> 
               <%= if @conn.assigns[:user] do %>
                 <li>
-                  <%= link "Sign Out", to: auth_path(@conn, :signout), class: "yellow-text text-accent-4" %>
+
+                  <%# link "Sign Out", to: auth_path(@conn, :signout), class: "yellow-text text-accent-4" %>
+
                 </li>
               <% else %>
                 <li>
-                  <%= link "Sign in with Github", to: auth_path(@conn, :request, "github"), class: "yellow-text text-accent-4" %>
+                  <img  src="<%= static_path(@conn, "/images/icons/githublogo.png") %>">
+                  <%# link "Sign in with Github", to: auth_path(@conn, :request, "github"), class: "yellow-text text-accent-4" %>
                 </li>
               <% end %>
             </ul>

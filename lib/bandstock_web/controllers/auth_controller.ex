@@ -8,10 +8,11 @@ defmodule BandstockWeb.AuthController do
 
 	#handle information that comes back from authenticating site
 	def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
+
+		
 		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "github"} #TODO change to provider from params
 
 		changeset = User.changeset(%User{}, user_params) #
-
 
 		IO.puts("++callback+++")
 		IO.inspect(conn)
