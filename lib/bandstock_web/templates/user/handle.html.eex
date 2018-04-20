@@ -1,0 +1,5 @@
+<h2 class= "cyan-text text-accent-3">New User Handle</h2>
+
+<%= render "form.html", Map.put(assigns, :action, user_path(@conn, :update, @user)) %>
+
+<span><%= link "New User", to: user_path(@conn, :new), class: "cyan-text text-accent-3" %></span>

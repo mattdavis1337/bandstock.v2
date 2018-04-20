@@ -1,0 +1,3 @@
+<h5 class="cyan-text text-accent-3 center-align press-start" style="padding-bottom:50px">Welcome to Bandstock</h5>
+
+<%= render "form.html",  Map.put(assigns, :action, user_path(@conn, :register)) %>

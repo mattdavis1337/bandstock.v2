@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
 
     <title>Bandstock</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gugi">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <script src="<%= static_path(@conn, "/js/pixi.min.js") %>"></script>
+    <script type="<%= static_path(@conn, "/js/config.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </head>
 
@@ -22,7 +26,7 @@
       let app;
       let sprites = {}
       let blues;
-      let scaling = .2;
+      let scaling = .04;
       let Application = PIXI.Application,
             loader = PIXI.loader,
             resources = PIXI.loader.resources,
@@ -30,14 +34,14 @@
             TextureCache = PIXI.utils.TextureCache,
             Rectangle = PIXI.Rectangle,
             Resources = PIXI.loader.resources;
-      
+
       function init(){
-        
-        app = new Application({ 
-            width: 940, 
-            height: 420,                       
-            antialias: true, 
-            transparent: false, 
+
+        app = new Application({
+            width: 940,
+            height: 420,
+            antialias: true,
+            transparent: false,
             resolution: 1
           }
         );
@@ -47,7 +51,7 @@
 
 
         //Add the canvas that Pixi automatically created for you to the HTML document
-        
+
 
         //load an image and run the `setup` function when it's done
         PIXI.loader
@@ -59,46 +63,85 @@
       //This `setup` function will run when the image has loaded
       function setup() {
         let speed = 3;
-        
 
-        var sprites = new Array(5);
-        for (var i = 0; i <= 15; i++) {
-          sprites[i] = new Array(15);
+        var height = 20;
+        var width = 58;
+
+        var sprites = new Array(height);
+        for (var i = 0; i <= width; i++) {
+          sprites[i] = new Array(width);
         }
 
-        var colors = new Array(15);
-        /*colors[0] = "magenta";
-        colors[1] = "red";
-        colors[2] = "orange";
-        colors[3] = "yellow";
-        colors[4] = "green";
-        colors[5] = "green";
-        colors[6] = "teal";
-        colors[7] = "blue";
-        colors[8] = "purple";
-        colors[9] = "magenta";*/
-        colors[0] = "magenta";
-        colors[1] = "red";
-        colors[2] = "orange";
-        colors[3] = "yellow";
-        colors[4] = "green";
+        var colors = new Array(width);
+        colors[0] = "yellow";
+        colors[1] = "purple";
+        colors[2] = "green";
+        colors[3] = "purple";
+        colors[4] = "blue";
         colors[5] = "teal";
         colors[6] = "blue";
         colors[7] = "purple";
-        colors[8] = "blue";
-        colors[9] = "teal";
-        colors[10] = "green";
-        colors[11] = "yellow";
-        colors[12] = "orange";
-        colors[13] = "red";
-        colors[14] = "magenta";
-        
+        colors[8] = "green";
+        colors[9] = "purple";
+        colors[10] = "blue";
+        colors[11] = "teal";
+        colors[12] = "blue";
+        colors[13] = "purple";
+        colors[14] = "green";
+        colors[15] = "purple";
+        colors[16] = "blue";
+        colors[17] = "teal";
+        colors[18] = "blue";
+        colors[19] = "teal";
+        colors[20] = "blue";
+        colors[21] = "purple";
+        colors[22] = "green";
+        colors[23] = "purple";
+        colors[24] = "blue";
+        colors[25] = "teal";
+        colors[26] = "green";
+        colors[27] = "yellow";
+        colors[28] = "orange";
+        colors[29] = "red";
+        colors[30] = "magenta";
+        colors[31] = "red";
+        colors[32] = "orange";
+        colors[33] = "yellow";
+        colors[34] = "green";
+        colors[35] = "teal";
+        colors[36] = "blue";
+        colors[37] = "purple";
+        colors[38] = "green";
+        colors[39] = "purple";
+        colors[40] = "blue";
+        colors[41] = "teal";
+        colors[42] = "blue";
+        colors[43] = "purple";
+        colors[44] = "green";
+        colors[45] = "purple";
+        colors[46] = "blue";
+        colors[47] = "teal";
+        colors[48] = "blue";
+        colors[49] = "purple";
+        colors[50] = "green";
+        colors[51] = "purple";
+        colors[52] = "blue";
+        colors[53] = "teal";
+        colors[54] = "blue";
+        colors[55] = "purple";
+        colors[56] = "green";
+        colors[57] = "purple";
+        colors[58] = "yellow";
+
+
+
+
         let total_width = 940;
-        
+
         for(var i = 0; i < colors.length; i++){
-          for(var j = 0; j < 5; j++){
+          for(var j = 0; j < height; j++){
             cur_sprite = sprites[i][j] = load_tile(colors[i], 5);
-            init_sprite_animation(cur_sprite, speed*(j+i+1)/6);
+            init_sprite_animation(cur_sprite, speed*(j+i+1)/width);
             console.log;
             cur_sprite.x = (i*cur_sprite.width+cur_sprite.width/2)+i*2;
             cur_sprite.y = cur_sprite.height/2 + j*cur_sprite.height + j*2;
@@ -117,69 +160,69 @@
         }*/
 
         for(var i = 0; i < colors.length; i++){
-          for(var j = 0; j< 5; j++){
+          for(var j = 0; j< height; j++){
             app.stage.addChild(sprites[i][j]);
           }
         }
 
         /*magenta_sprite = sprites[0][0] = load_tile("magenta", 5);
-        init_sprite_animation(magenta_sprite, speed);                          
+        init_sprite_animation(magenta_sprite, speed);
         magenta_sprite.x = (app.screen.width/2) - total_width/2;
         magenta_sprite.y = 100;
         magenta_sprite.play();
         app.stage.addChild(magenta_sprite);
 
         red_sprite = sprites[0][1] = load_tile("red", 5);
-        init_sprite_animation(red_sprite, speed);                          
+        init_sprite_animation(red_sprite, speed);
         red_sprite.x = magenta_sprite.x+(red_sprite.width+2);
         red_sprite.y = magenta_sprite.y;
         red_sprite.play();
         app.stage.addChild(red_sprite);
 
         orange_sprite = sprites[0][2] = load_tile("orange", 5);
-        init_sprite_animation(orange_sprite, speed);                          
+        init_sprite_animation(orange_sprite, speed);
         orange_sprite.x = red_sprite.x+(orange_sprite.width+2);
         orange_sprite.y = magenta_sprite.y;
         orange_sprite.play();
         app.stage.addChild(orange_sprite);
 
         yellow_sprite = sprites[0][3] = load_tile("yellow", 5);
-        init_sprite_animation(yellow_sprite, speed);                          
+        init_sprite_animation(yellow_sprite, speed);
         yellow_sprite.x = orange_sprite.x+(yellow_sprite.width+2);
         yellow_sprite.y = magenta_sprite.y;
         yellow_sprite.play();
         app.stage.addChild(yellow_sprite);
 
         green_sprite = sprites[0][4] = load_tile("green", 5);
-        init_sprite_animation(green_sprite, speed);                          
+        init_sprite_animation(green_sprite, speed);
         green_sprite.x = yellow_sprite.x+(green_sprite.width+2);
         green_sprite.y = magenta_sprite.y;
         green_sprite.play();
         app.stage.addChild(green_sprite);
 
         teal_sprite = sprites[0][5] = load_tile("teal", 5);
-        init_sprite_animation(teal_sprite, speed);                          
+        init_sprite_animation(teal_sprite, speed);
         teal_sprite.x = green_sprite.x+(teal_sprite.width+2);
         teal_sprite.y = magenta_sprite.y;
         teal_sprite.play();
         app.stage.addChild(teal_sprite);
 
         blue_sprite = sprites[0][6] = load_tile("blue", 5);
-        init_sprite_animation(blue_sprite, speed);                          
+        init_sprite_animation(blue_sprite, speed);
         blue_sprite.x = teal_sprite.x+(blue_sprite.width+2);
         blue_sprite.y = magenta_sprite.y;
         blue_sprite.play();
         app.stage.addChild(blue_sprite);
 
         purple_sprite = sprites[0][7] = load_tile("purple", 5);
-        init_sprite_animation(purple_sprite, speed);                          
+        init_sprite_animation(purple_sprite, speed);
         purple_sprite.x = blue_sprite.x+(purple_sprite.width+2);
         purple_sprite.y = magenta_sprite.y;
         purple_sprite.play();
         app.stage.addChild(purple_sprite);
 
         magenta_sprite2 = sprites[0][8] = load_tile("magenta", 5);
-        init_sprite_animation(magenta_sprite2, speed);                          
+        init_sprite_animation(magenta_sprite2, speed);
         magenta_sprite2.x = purple_sprite.x+magenta_sprite2.width+2;
         magenta_sprite2.y = magenta_sprite.y;
         magenta_sprite2.play();
@@ -190,14 +233,14 @@
 
       function load_tile(color, frame_count){
         textures = [];
-        
+
         for (i = 0; i < frame_count; i++){
           var framekey = color + ' ' + i + '.png';
           var texture = PIXI.Texture.fromFrame(framekey);
           var time = resources.spritesheet.data.frames[framekey].duration;
           textures.push({texture, time});
         }
-        
+
         return new PIXI.extras.AnimatedSprite(textures);
       }
 
@@ -213,7 +256,7 @@
         );
         blue_off.x = 668;
         blue_off.y = 50;
-        //blue_off.y = app.stage.height /2 - blue_off.height /2;        
+        //blue_off.y = app.stage.height /2 - blue_off.height /2;
         //app.stage.addChild(blue_off);
         blue_animation.push(blue_off);
 
@@ -222,7 +265,7 @@
         );
         blue_0.x = 668;
         blue_0.y = 50;
-        //blue_0.y = app.stage.height /2 - blue_0.height /2;        
+        //blue_0.y = app.stage.height /2 - blue_0.height /2;
         app.stage.addChild(blue_0);
         blue_animation.push(blue_0);
 
@@ -231,7 +274,7 @@
         );
         blue_1.x = 668;
         blue_1.y = 50;
-        //blue_1.y = app.stage.height /2 - blue_1.height /2;        
+        //blue_1.y = app.stage.height /2 - blue_1.height /2;
         app.stage.addChild(blue_1);
         blue_animation.push(blue_1);
 
@@ -240,7 +283,7 @@
         );
         blue_2.x = 668;
         blue_2.y = 50;
-        //blue_1.y = app.stage.height /2 - blue_1.height /2;        
+        //blue_1.y = app.stage.height /2 - blue_1.height /2;
         app.stage.addChild(blue_2);
         blue_animation.push(blue_2);
 
@@ -249,13 +292,13 @@
         );
         blue_3.x = 668;
         blue_3.y = 50;
-        //blue_1.y = app.stage.height /2 - blue_1.height /2;        
+        //blue_1.y = app.stage.height /2 - blue_1.height /2;
         app.stage.addChild(blue_3);
         blue_animation.push(blue_3);
-        
+
         blues = new PIXI.AnimatedSprite(blue_animation);*/
 
-      
+
 
       //function gameLoop() {
         //Call this `gameLoop` function on the next screen refresh
@@ -270,7 +313,7 @@
 
 //Start the loop
 //gameLoop();
-      
+
 
     </script>
     <div class="container">
@@ -288,30 +331,35 @@
           <div class="col s1 orange orange-text accent-4 text-accent-4 center-align">K</div>
           <div class="col s1 red red-text accent-4 text-accent-4 center-align">~</div>
           <div class="col s1 pink pink-text accent-4 text-accent-4 center-align">.</div>
-        
+
           <div class="col s12 black accent-4 right">
             <ul class="left">
               <li class="yellow-text text-accent-4" role="alert"><%= get_flash(@conn, :info) %></li>
               <li class="" role="alert"><%= get_flash(@conn, :error) %></li>
             </ul>
-            <ul class="right"> 
+            <ul class="right">
               <%= if @conn.assigns[:user] do %>
                 <li>
 
-                  <%# link "Sign Out", to: auth_path(@conn, :signout), class: "yellow-text text-accent-4" %>
+                  <%= link "Sign Out", to: auth_path(@conn, :signout), class: "yellow-text text-accent-4" %>
 
                 </li>
               <% else %>
                 <li>
-                  <img  src="<%= static_path(@conn, "/images/icons/githublogo.png") %>">
-                  <%# link "Sign in with Github", to: auth_path(@conn, :request, "github"), class: "yellow-text text-accent-4" %>
+                  <a href="<%= auth_path(@conn, :register) %>">
+                    <img  src="<%= static_path(@conn, "/images/icons/key1.png") %>">
+                  </a>
+
+                  <!-- <a href="<%= auth_path(@conn, :request, "github") %>" >
+                    <img  src="<%= static_path(@conn, "/images/icons/githublogo.png") %>">
+                  </a> -->
                 </li>
               <% end %>
             </ul>
           </div>
         </div>
 
-       
+
       </header>
 
 

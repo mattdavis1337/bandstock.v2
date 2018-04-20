@@ -41,8 +41,9 @@ defmodule Bandstock.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:ueberauth, "~> 0.3"},
+      {:ueberauth, "~> 0.4"},
       {:ueberauth_github, "~> 0.4"},
+      {:ueberauth_facebook, "~> 0.4"},
       {:egd, github: "erlang/egd"},
       {:color_utils, "0.2.0"}
     ]

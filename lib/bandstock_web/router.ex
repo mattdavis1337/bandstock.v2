@@ -28,6 +28,7 @@ defmodule BandstockWeb.Router do
     get "/users/:id", UserController, :show
     put "/users/:id", UserController, :update
     delete "/users/:id", UserController, :delete
+    post "/users/register", UserController, :register
 
     get "/tiles", TileController, :index
     get "/tiles/new", TileController, :new
@@ -42,10 +43,13 @@ defmodule BandstockWeb.Router do
   scope "/auth", BandstockWeb do
     pipe_through :browser
 
+    get "/register", AuthController, :register
     get "/signout", AuthController, :signout
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
-    
+    post "/:provider/callback", AuthController, :callback
+
+
   end
   # Other scopes may use custom stacks.
   # scope "/api", BandstockWeb do

@@ -56,3 +56,5 @@ config :bandstock, Bandstock.Repo,
   database: "bandstock_dev",
   hostname: "localhost",
   pool_size: 10
+
+  import_config "dev.secret.exs"

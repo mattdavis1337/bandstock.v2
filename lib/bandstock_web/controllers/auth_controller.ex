@@ -5,17 +5,15 @@ defmodule BandstockWeb.AuthController do
 	alias Bandstock.Account.User
 	alias Bandstock.Repo
 	alias Ueberauth.Strategy.Helpers
+	alias Bandstock.Conversation.ConversationServer
 
 	#handle information that comes back from authenticating site
 	def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
+		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "github", handle: Map.get(get_session(conn, :user_params), "handle")} #TODO change to provider from params
+		changeset = User.changeset(%User{}, user_params)
 
-		
-		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "github"} #TODO change to provider from params
-
-		changeset = User.changeset(%User{}, user_params) #
-
-		IO.puts("++callback+++")
-		IO.inspect(conn)
+		IO.puts("+++++callback++++")
+		IO.inspect(user_params)
 		signin(conn, changeset)
 	end
 
@@ -33,32 +31,46 @@ defmodule BandstockWeb.AuthController do
 		page_path(conn, :index)
 	end
 
+	defp register_path(conn) do
+		user_path(conn, :register)
+	end
+
 	defp signin(conn, changeset) do
-		case insert_or_update_user(changeset) do
+		case insert_or_update_user(conn, changeset) do
 			{:ok, user} ->
 				IO.puts("+++auth welcome back")
 				IO.inspect(user)
-
 				conn
-				|> put_flash(:info, "Welcome back " <> user.handle <> "!")
+				|> put_flash(:info, "Welcome back " <> user.handle)
 				|> put_session(:user_id, user.id)  #add user_id to session
 				|> redirect(to: homepath(conn))
 			{:error, _reason} ->
 				IO.puts("+++auth error")
+				IO.inspect(_reason)
 				conn
 				|> put_flash(:error, "Error signing in")
 				|> redirect(to: homepath(conn))
 		end
 	end
 
-	defp insert_or_update_user(changeset) do
+	defp insert_or_update_user(conn, changeset) do
 		case Repo.get_by(User, email: changeset.changes.email) do
 			nil ->
+				#IO.puts("++++redirecting in insert_or_update_user++++")
+				#IO.inspect(register_path(conn))
+				#redirect(conn, to: register_path(conn)) #collect additional info from user #MFD
+
 				IO.puts("+++++insert user")
+				#ConversationServer.start_conversation({:start})
 				Repo.insert(changeset) #add new user
 			user ->
 				IO.puts("+++++return user")
 				{:ok, user} #return existing user
 		end
+	end
+
+	def register(conn, _params) do
+		IO.puts("+++register+++")
+		render(conn, "register.html", changeset: User.changeset(%User{}, %{}))
 	end
 end

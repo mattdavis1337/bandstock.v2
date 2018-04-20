@@ -28,9 +28,11 @@ import_config "#{Mix.env}.exs"
 
 config :ueberauth, Ueberauth,
 	providers: [
-		github: {Ueberauth.Strategy.Github, [] }
+    facebook: { Ueberauth.Strategy.Facebook, [] },
+		github: {Ueberauth.Strategy.Github, []}
 	]
 
-config :ueberauth, Ueberauth.Strategy.Github.OAuth,
-	client_id:  "f736033898bc3772c56b",
-	client_secret: "e93fca992ef29643e106184e76fef57601da0aff"
+#Live: Client ID
+#bf6d89024d8d1331a9d8
+#Client Secret
+#43a61f5df173796603761c6068198af34a848f93
