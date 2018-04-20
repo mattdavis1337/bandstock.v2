@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gugi">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <script src="<%= static_path(@conn, "/js/pixi.min.js") %>"></script>
     <script type="<%= static_path(@conn, "/js/config.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </head>
