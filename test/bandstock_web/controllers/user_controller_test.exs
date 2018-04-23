@@ -14,6 +14,14 @@ defmodule BandstockWeb.UserControllerTest do
     user
   end
 
+  describe "register" do
+    test "Register new user", %{conn: conn} do
+      conn = get conn, auth_path(conn, :request, "github")
+      IO.puts("+authgithub+")
+      IO.inspect(conn)
+    end
+  end
+
   describe "index" do
     test "lists all users", %{conn: conn} do
       conn = get conn, user_path(conn, :index)
@@ -83,8 +91,11 @@ defmodule BandstockWeb.UserControllerTest do
     end
   end
 
+
+
   defp create_user(_) do
     user = fixture(:user)
     {:ok, user: user}
   end
+
 end

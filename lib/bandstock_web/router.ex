@@ -1,8 +1,6 @@
 defmodule BandstockWeb.Router do
   use BandstockWeb, :router
 
-
-
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -25,10 +23,10 @@ defmodule BandstockWeb.Router do
     get "/users/new", UserController, :new
     post "/users", UserController, :create
     get "/users/:id/edit", UserController, :edit
+    get "/users/register", UserController, :register
     get "/users/:id", UserController, :show
     put "/users/:id", UserController, :update
     delete "/users/:id", UserController, :delete
-    post "/users/register", UserController, :register
 
     get "/tiles", TileController, :index
     get "/tiles/new", TileController, :new
@@ -38,7 +36,6 @@ defmodule BandstockWeb.Router do
     put "/tiles/:id", TileController, :update
     delete "/tiles/:id", TileController, :delete
   end
-
 
   scope "/auth", BandstockWeb do
     pipe_through :browser

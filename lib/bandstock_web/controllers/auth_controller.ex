@@ -9,11 +9,16 @@ defmodule BandstockWeb.AuthController do
 
 	#handle information that comes back from authenticating site
 	def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "github", handle: Map.get(get_session(conn, :user_params), "handle")} #TODO change to provider from params
+
+		IO.puts("+++++auth callback++++")
+
+		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "github"} #TODO change to provider from params
+		#TODO add handle code , handle: Map.get(get_session(conn, :user_params), "handle")
+
 		changeset = User.changeset(%User{}, user_params)
 
-		IO.puts("+++++callback++++")
 		IO.inspect(user_params)
+
 		signin(conn, changeset)
 	end
 
@@ -41,7 +46,7 @@ defmodule BandstockWeb.AuthController do
 				IO.puts("+++auth welcome back")
 				IO.inspect(user)
 				conn
-				|> put_flash(:info, "Welcome back " <> user.handle)
+				|> put_flash(:info, "Welcome back!") # <> user.handle)
 				|> put_session(:user_id, user.id)  #add user_id to session
 				|> redirect(to: homepath(conn))
 			{:error, _reason} ->

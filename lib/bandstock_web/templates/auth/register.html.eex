@@ -1,3 +1,7 @@
-<h5 class="cyan-text text-accent-3 center-align press-start" style="padding-bottom:50px">Welcome to Bandstock</h5>
+<a href="<%= auth_path(@conn, :request, "github") %>">
+  <img  src="<%= static_path(@conn, "/images/icons/githublogo.png") %>">
+</a>
 
-<%= render "form.html",  Map.put(assigns, :action, user_path(@conn, :register)) %>
+<!--  Keeping this here to show how the registration form was rendered before.
+h5 class="cyan-text text-accent-3 center-align press-start" style="padding-bottom:50px">Welcome to Bandstock</h5>
+<%= render "form.html",  Map.put(assigns, :action, user_path(@conn, :register)) %>-->

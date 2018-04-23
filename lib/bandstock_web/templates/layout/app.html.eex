@@ -133,20 +133,15 @@
         colors[57] = "purple";
         colors[58] = "yellow";
 
-
-
-
         let total_width = 940;
 
         for(var i = 0; i < colors.length; i++){
           for(var j = 0; j < height; j++){
             cur_sprite = sprites[i][j] = load_tile(colors[i], 5);
             init_sprite_animation(cur_sprite, speed*(j+i+1)/width);
-            console.log;
             cur_sprite.x = (i*cur_sprite.width+cur_sprite.width/2)+i*2;
             cur_sprite.y = cur_sprite.height/2 + j*cur_sprite.height + j*2;
             cur_sprite.play();
-            //app.stage.addChild(cur_sprite);
           }
         }
         /*var i = 8;
