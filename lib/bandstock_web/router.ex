@@ -1,6 +1,14 @@
 defmodule BandstockWeb.Router do
   use BandstockWeb, :router
 
+  pipeline :browser_nouser do
+      plug :accepts, ["html"]
+      plug :fetch_session
+      plug :fetch_flash
+      plug :protect_from_forgery
+      plug :put_secure_browser_headers
+  end
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,10 +16,16 @@ defmodule BandstockWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug BandstockWeb.Plugs.SetUser
+    #plug BandstockWeb.Plugs.CheckRegistration
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/handle", BandstockWeb do
+    pipe_through :browser_nouser
+    get "/update_handle", UserController, :update_handle
   end
 
   scope "/", BandstockWeb do
@@ -27,6 +41,7 @@ defmodule BandstockWeb.Router do
     get "/users/:id", UserController, :show
     put "/users/:id", UserController, :update
     delete "/users/:id", UserController, :delete
+
 
     get "/tiles", TileController, :index
     get "/tiles/new", TileController, :new

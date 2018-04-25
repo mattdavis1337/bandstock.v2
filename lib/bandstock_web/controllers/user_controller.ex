@@ -4,7 +4,7 @@ defmodule BandstockWeb.UserController do
   alias Bandstock.Account
   alias Bandstock.Account.User
 
-  plug BandstockWeb.Plugs.RequireAuth when action in[:new, :show, :edit, :update, :delete]
+  plug BandstockWeb.Plugs.RequireAuth when action in[:new, :show, :edit, :update, :delete, :update_handle]
 
   def index(conn, _params) do
     users = Account.list_users()
@@ -45,6 +45,15 @@ defmodule BandstockWeb.UserController do
     user = Account.get_user!(id)
     changeset = Account.change_user(user)
     render(conn, "edit.html", user: user, changeset: changeset)
+  end
+
+  def update_handle(conn, params) do
+    #%{"handle" => handle, "email" => email}
+
+    user_id = get_session(conn, :user_id)
+    user = user_id && Repo.get(User, user_id)
+    IO.puts("+++update_handle+++")
+    render(conn, "handle.html", user: user)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
