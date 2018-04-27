@@ -20,7 +20,7 @@ defmodule Bandstock.Mixfile do
   def application do
     [
       mod: {Bandstock.Application, []},
-      extra_applications: [:logger, :runtime_tools, :ueberauth, :ueberauth_github]
+      extra_applications: [:logger, :runtime_tools, :ueberauth, :ueberauth_github, :ueberauth_facebook]
     ]
   end
 
@@ -43,7 +43,7 @@ defmodule Bandstock.Mixfile do
       {:cowboy, "~> 1.0"},
       {:ueberauth, "~> 0.4"},
       {:ueberauth_github, "~> 0.4"},
-      {:ueberauth_facebook, "~> 0.4"},
+      {:ueberauth_facebook, "~> 0.7"},
       {:egd, github: "erlang/egd"},
       {:color_utils, "0.2.0"}
     ]

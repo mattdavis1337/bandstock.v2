@@ -3,6 +3,7 @@ defmodule BandstockWeb.UserController do
 
   alias Bandstock.Account
   alias Bandstock.Account.User
+  alias Bandstock.Repo
 
   plug BandstockWeb.Plugs.RequireAuth when action in[:new, :show, :edit, :update, :delete, :update_handle]
 
@@ -33,7 +34,7 @@ defmodule BandstockWeb.UserController do
 
     conn
     |> put_session(:user_params, user_params)  #add user_id to session
-    |> redirect(to: auth_path(conn, :request, "github"))
+    |> redirect(to: auth_path(conn, :request, "facebook"))
   end
 
   def show(conn, %{"id" => id}) do
@@ -51,9 +52,10 @@ defmodule BandstockWeb.UserController do
     #%{"handle" => handle, "email" => email}
 
     user_id = get_session(conn, :user_id)
-    user = user_id && Repo.get(User, user_id)
+    user = user_id && Account.get_user!(user_id)
     IO.puts("+++update_handle+++")
-    render(conn, "handle.html", user: user)
+    changeset = Account.change_user(user)
+    render(conn, "handle.html", user: user, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do

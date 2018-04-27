@@ -7,8 +7,6 @@ defmodule BandstockWeb.UserControllerTest do
   @update_attrs %{email: "some updated email", handle: "some updated handle", provider: "some updated provider", token: "some updated token"}
   @invalid_attrs %{email: nil, handle: nil, provider: nil, token: nil}
 
-
-
   def fixture(:user) do
     {:ok, user} = Account.create_user(@create_attrs)
     user
@@ -16,7 +14,7 @@ defmodule BandstockWeb.UserControllerTest do
 
   describe "register" do
     test "Register new user", %{conn: conn} do
-      conn = get conn, auth_path(conn, :request, "github")
+      conn = get conn, auth_path(conn, :request, "facebook")
       IO.puts("+authgithub+")
       IO.inspect(conn)
     end
@@ -91,11 +89,8 @@ defmodule BandstockWeb.UserControllerTest do
     end
   end
 
-
-
   defp create_user(_) do
     user = fixture(:user)
     {:ok, user: user}
   end
-
 end

@@ -13,9 +13,9 @@ defmodule BandstockWeb.Plugs.SetUser do
 	def call(conn, _params) do
 		IO.puts("++in set_user+++")
 		user_id = get_session(conn, :user_id)
-
 		cond do
 			user = user_id && Repo.get(User, user_id) ->    #if user_id exists, then rs of && happens, gets user, then assigns result to user
+				IO.puts("++set_user 1")
 				conn = assign(conn, :user, user) #conn.assigns.user
 				if user.handle == nil do
 					IO.puts("+++user handle nil redirecting+++")
@@ -23,7 +23,9 @@ defmodule BandstockWeb.Plugs.SetUser do
 					|> redirect(to: Helpers.user_path(conn, :update_handle))
 					|> halt()
 				end
+				conn
 			true ->
+				IO.puts("++set_user 2")
 				assign(conn, :user, nil)
 		end
 	end
