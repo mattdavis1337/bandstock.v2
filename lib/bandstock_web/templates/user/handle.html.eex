@@ -1,5 +1,9 @@
-<h2 class= "cyan-text text-accent-3">New User Handle</h2>
 
-<%= render "form.html", Map.put(assigns, :action, user_path(@conn, :update, @user)) %>
+<h2 class= "teal-text text-accent-6 center-align press-start">
+  <div>
+    <img height="150px" class="center-align" style="padding-bottom:15px" src="<%= static_path(@conn, "/images/8biticon.jpg") %>">
+  </div>
+  Your handle please...
+</h2>
 
-<span><%= link "New User", to: user_path(@conn, :new), class: "cyan-text text-accent-3" %></span>
+<%= render "handle_form.html", Map.put(assigns, :action, user_path(@conn, :update, @user)) %>

@@ -23,7 +23,7 @@
   <body class="black" onload="init()">
     <script>
 
-      let app;
+
       let sprites = {}
       let blues;
       let scaling = .04;
@@ -341,11 +341,11 @@
                 </li>
               <% else %>
                 <li>
-                  <a href="<%= auth_path(@conn, :register) %>">
+                  <a href="<%= auth_path(@conn, :request, "facebook")%>">
                     <img  src="<%= static_path(@conn, "/images/icons/key1.png") %>">
                   </a>
-
-                  <!-- <a href="<%= auth_path(@conn, :request, "github") %>" >
+                  <!-- auth_path(@conn, :register)  -->
+                  <!-- <a href="<%= auth_path(@conn, :request, "facebook") %>" >
                     <img  src="<%= static_path(@conn, "/images/icons/githublogo.png") %>">
                   </a> -->
                 </li>
