@@ -14,7 +14,7 @@ defmodule BandstockWeb.UserControllerTest do
 
   describe "register" do
     test "Register new user", %{conn: conn} do
-      conn = get conn, auth_path(conn, :request, "facebook")
+      conn = get conn, auth_path(conn, :request, "github")
       IO.puts("+authgithub+")
       IO.inspect(conn)
     end

@@ -11,8 +11,12 @@ defmodule BandstockWeb.Plugs.SetUser do
 	end
 
 	def call(conn, _params) do
-		IO.puts("++in set_user+++")
+		IO.puts("++in set_user!+++")
+
 		user_id = get_session(conn, :user_id)
+		IO.puts("user_id:")
+		IO.inspect(user_id)
+
 		cond do
 			user = user_id && Repo.get(User, user_id) ->    #if user_id exists, then rs of && happens, gets user, then assigns result to user
 				IO.puts("++set_user 1")
@@ -26,6 +30,7 @@ defmodule BandstockWeb.Plugs.SetUser do
 				conn
 			true ->
 				IO.puts("++set_user 2")
+				IO.inspect(:user)
 				assign(conn, :user, nil)
 		end
 	end

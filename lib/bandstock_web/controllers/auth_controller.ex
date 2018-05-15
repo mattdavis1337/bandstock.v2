@@ -10,10 +10,10 @@ defmodule BandstockWeb.AuthController do
 	#handle information that comes back from authenticating site
 	def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
 
-		IO.puts("+++++auth callback++++")
-		IO.inspect(_params)
+		IO.puts("+++++auth callback++++");
+		IO.inspect(_params);
 
-		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "facebook"} #TODO change to provider from params
+		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "github"} #TODO change to provider from params
 		#TODO add handle code , handle: Map.get(get_session(conn, :user_params), "handle")
 
 		changeset = User.changeset(%User{}, user_params)

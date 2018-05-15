@@ -34,7 +34,7 @@ defmodule BandstockWeb.UserController do
 
     conn
     |> put_session(:user_params, user_params)  #add user_id to session
-    |> redirect(to: auth_path(conn, :request, "facebook"))
+    |> redirect(to: auth_path(conn, :request, "github"))
   end
 
   def show(conn, %{"id" => id}) do

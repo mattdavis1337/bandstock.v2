@@ -345,7 +345,7 @@
                     <img  src="<%= static_path(@conn, "/images/icons/key1.png") %>">
                   </a>
                   <!-- auth_path(@conn, :register)  -->
-                  <!-- <a href="<%= auth_path(@conn, :request, "facebook") %>" >
+                  <!-- <a href="<%= auth_path(@conn, :request, "github") %>" >
                     <img  src="<%= static_path(@conn, "/images/icons/githublogo.png") %>">
                   </a> -->
                 </li>
