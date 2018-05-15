@@ -7,7 +7,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-
     <title>Bandstock</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">

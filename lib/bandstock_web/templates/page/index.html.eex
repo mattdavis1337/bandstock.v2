@@ -1,5 +1,5 @@
 <div id="splash-screen" class="jumbotron black col-lg-12" style="padding-top:0px">
-	<img style="padding-bottom:75px" src="<%= static_path(@conn, "/images/logo2.png") %>">
+	<img style="padding-bottom:75px" width="100%" src="<%= static_path(@conn, "/images/logo2.png") %>">
 	<br />
 	<br />
 	<hr  />
