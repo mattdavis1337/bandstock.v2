@@ -60,7 +60,14 @@ defmodule BandstockWeb.Router do
     get "/:provider/callback", AuthController, :callback
     post "/:provider/callback", AuthController, :callback
   end
-  
+
+  scope "/tile", BandstockWeb do
+    pipe_through :browser
+
+    get "/index", TileController, :index
+    get "/heap", TileController, :heap
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", BandstockWeb do
   #   pipe_through :api

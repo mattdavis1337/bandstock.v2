@@ -8,8 +8,23 @@
   </li>
 
   <li>
-    <strong>Location:</strong>
-    <%= @tile.location %>
+    <strong>Location X</strong>
+    <%= @tile.loc_x %>
+  </li>
+
+  <li>
+    <strong>Location Y</strong>
+    <%= @tile.loc_x %>
+  </li>
+
+  <li>
+    <strong>Size X</strong>
+    <%= @tile.loc_x %>
+  </li>
+
+  <li>
+    <strong>Size X</strong>
+    <%= @tile.loc_x %>
   </li>
 
   <li>

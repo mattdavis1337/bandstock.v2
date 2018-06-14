@@ -6,7 +6,10 @@ defmodule Bandstock.Game.Tile do
   schema "tiles" do
     field :hash, :string
     field :image, :string
-    field :location, :string
+    field :loc_x, :integer
+    field :loc_y, :integer
+    field :size_x, :integer
+    field :size_y, :integer
 
     timestamps()
   end
@@ -14,7 +17,7 @@ defmodule Bandstock.Game.Tile do
   @doc false
   def changeset(tile, attrs) do
     tile
-    |> cast(attrs, [:hash, :location, :image])
-    |> validate_required([:hash, :location, :image])
+    |> cast(attrs, [:hash, :loc_x, :loc_y, :size_x, :size_y, :image ])
+    |> validate_required([:hash, :loc_x, :loc_y, :size_x, :size_y, :image ])
   end
 end

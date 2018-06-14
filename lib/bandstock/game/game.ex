@@ -22,6 +22,19 @@ defmodule Bandstock.Game do
   end
 
   @doc """
+  Returns a list of tiles sorted for heap sort
+
+  ## Examples
+
+      iex> list_tiles()
+      [%Tile{}, ...]
+
+  """
+  def do_heap do
+    Repo.all(Tile)
+  end
+
+  @doc """
   Gets a single tile.
 
   Raises `Ecto.NoResultsError` if the Tile does not exist.

@@ -12,9 +12,27 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :location, class: "control-label" %>
-    <%= text_input f, :location, class: "form-control" %>
-    <%= error_tag f, :location %>
+    <%= label f, :loc_x, class: "control-label" %>
+    <%= text_input f, :loc_x, class: "form-control" %>
+    <%= error_tag f, :loc_x %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :loc_y, class: "control-label" %>
+    <%= text_input f, :loc_y, class: "form-control" %>
+    <%= error_tag f, :loc_y %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :size_x, class: "control-label" %>
+    <%= text_input f, :size_x, class: "form-control" %>
+    <%= error_tag f, :size_x %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :size_y, class: "control-label" %>
+    <%= text_input f, :size_y, class: "form-control" %>
+    <%= error_tag f, :size_y %>
   </div>
 
   <div class="form-group">

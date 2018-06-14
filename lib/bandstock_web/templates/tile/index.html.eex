@@ -4,7 +4,10 @@
   <thead>
     <tr>
       <th>Hash</th>
-      <th>Location</th>
+      <th>Location X</th>
+      <th>Location Y</th>
+      <th>Size X</th>
+      <th>Size Y</th>
       <th>Image</th>
 
       <th></th>
@@ -14,7 +17,10 @@
 <%= for tile <- @tiles do %>
     <tr>
       <td><%= tile.hash %></td>
-      <td><%= tile.location %></td>
+      <td><%= tile.loc_x %></td>
+      <td><%= tile.loc_y %></td>
+      <td><%= tile.size_x %></td>
+      <td><%= tile.size_y %></td>
       <td><%= tile.image %></td>
 
       <td class="text-right">

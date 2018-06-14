@@ -9,6 +9,11 @@ defmodule BandstockWeb.TileController do
     render(conn, "index.html", tiles: tiles)
   end
 
+  def heap(conn, _params) do
+    tiles = Game.do_heap()
+    render(conn, "heap.html", tiles: tiles)
+  end
+
   def new(conn, _params) do
     changeset = Game.change_tile(%Tile{})
     render(conn, "new.html", changeset: changeset)

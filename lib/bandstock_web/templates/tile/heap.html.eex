@@ -1,0 +1,158 @@
+<script>
+
+
+  let sprites = {}
+  let blues;
+  let scaling = .04;
+  let Application = PIXI.Application,
+        loader = PIXI.loader,
+        resources = PIXI.loader.resources,
+        Sprite = PIXI.Sprite,
+        TextureCache = PIXI.utils.TextureCache,
+        Rectangle = PIXI.Rectangle,
+        Resources = PIXI.loader.resources;
+
+  function init(){
+
+    app = new Application({
+        width: 940,
+        height: 420,
+        antialias: true,
+        transparent: false,
+        resolution: 1
+      }
+    );
+
+    //Add the canvas that Pixi automatically created for you to the HTML document
+    document.getElementById('game-board').appendChild(app.view);
+    app.stop();
+
+    //load an image and run the `setup` function when it's done
+    PIXI.loader
+      .add("/images/bandstockTileSheet2.png")
+      .add("spritesheet", "/images/bandstockTileSheet2.json")
+      .load(setup);
+  }
+
+  //This `setup` function will run when the image has loaded
+  function setup() {
+    let speed = 3;
+    var height = 20;
+    var width = 58;
+
+    var sprites = new Array(height);
+    for (var i = 0; i <= width; i++) {
+      sprites[i] = new Array(width);
+    }
+
+    var colors = new Array(width);
+    colors[0] = "yellow";
+    colors[1] = "purple";
+    colors[2] = "green";
+    colors[3] = "purple";
+    colors[4] = "blue";
+    colors[5] = "teal";
+    colors[6] = "blue";
+    colors[7] = "purple";
+    colors[8] = "green";
+    colors[9] = "purple";
+    colors[10] = "blue";
+    colors[11] = "teal";
+    colors[12] = "blue";
+    colors[13] = "purple";
+    colors[14] = "green";
+    colors[15] = "purple";
+    colors[16] = "blue";
+    colors[17] = "teal";
+    colors[18] = "blue";
+    colors[19] = "teal";
+    colors[20] = "blue";
+    colors[21] = "purple";
+    colors[22] = "green";
+    colors[23] = "purple";
+    colors[24] = "blue";
+    colors[25] = "teal";
+    colors[26] = "green";
+    colors[27] = "yellow";
+    colors[28] = "orange";
+    colors[29] = "red";
+    colors[30] = "magenta";
+    colors[31] = "red";
+    colors[32] = "orange";
+    colors[33] = "yellow";
+    colors[34] = "green";
+    colors[35] = "teal";
+    colors[36] = "blue";
+    colors[37] = "purple";
+    colors[38] = "green";
+    colors[39] = "purple";
+    colors[40] = "blue";
+    colors[41] = "teal";
+    colors[42] = "blue";
+    colors[43] = "purple";
+    colors[44] = "green";
+    colors[45] = "purple";
+    colors[46] = "blue";
+    colors[47] = "teal";
+    colors[48] = "blue";
+    colors[49] = "purple";
+    colors[50] = "green";
+    colors[51] = "purple";
+    colors[52] = "blue";
+    colors[53] = "teal";
+    colors[54] = "blue";
+    colors[55] = "purple";
+    colors[56] = "green";
+    colors[57] = "purple";
+    colors[58] = "yellow";
+
+    let total_width = 940;
+
+    for(var i = 0; i < colors.length; i++){
+      for(var j = 0; j < height; j++){
+        cur_sprite = sprites[i][j] = load_tile(colors[i], 5);
+        init_sprite_animation(cur_sprite, speed/2*(j*i+1)/width);
+        cur_sprite.x = (i*cur_sprite.width+cur_sprite.width/2)+i*2;
+        cur_sprite.y = cur_sprite.height/2 + j*cur_sprite.height + j*2;
+        cur_sprite.play();
+      }
+    }
+
+    for(var i = 0; i < colors.length; i++){
+      for(var j = 0; j< height; j++){
+        app.stage.addChild(sprites[i][j]);
+      }
+    }
+
+    app.start();
+  }
+
+  function load_tile(color, frame_count){
+    textures = [];
+
+    for (i = 0; i < frame_count; i++){
+      var framekey = color + ' ' + i + '.png';
+      var texture = PIXI.Texture.fromFrame(framekey);
+      var time = resources.spritesheet.data.frames[framekey].duration;
+      textures.push({texture, time});
+    }
+
+    return new PIXI.extras.AnimatedSprite(textures);
+  }
+
+  function init_sprite_animation(sprite, speedIn){
+    sprite.animationSpeed = speedIn;
+    sprite.anchor.set(0.5);
+    sprite.scale.set(scaling);
+    return sprite;
+  }
+
+</script>
+
+<div id="game-board" class="jumbotron black col-lg-12" style="padding-top:0px">
+	<img style="padding-bottom:75px" width="100%" src="<%= static_path(@conn, "/images/logo2.png") %>">
+	<br />
+	<br />
+	<hr  />
+	<br />
+</div>
