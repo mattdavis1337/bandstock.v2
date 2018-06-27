@@ -8,6 +8,10 @@
 # Generated on crash by the VM
 erl_crash.dump
 
+#SSL files
+myscript.sh
+priv/bandstock_cert.crt
+priv/bandstock_keyfile.key
 # Generated on crash by NPM
 npm-debug.log
 

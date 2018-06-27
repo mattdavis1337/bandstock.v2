@@ -9,13 +9,19 @@ use Mix.Config
 config :bandstock,
   ecto_repos: [Bandstock.Repo]
 
-# Configures the endpoint
-config :bandstock, BandstockWeb.Endpoint,
-  url: [host: "localhost"],
-  secret_key_base: "bw+axmSUPIxPMJX5vMeu0ni+UC463x28MqoKHNsOTuHvK3vKqL48Tyb+7iOM+J/+",
-  render_errors: [view: BandstockWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Bandstock.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  config :bandstock, BandstockWeb.Endpoint,
+    url: [host: "localhost"],
+    secret_key_base: "bw+axmSUPIxPMJX5vMeu0ni+UC463x28MqoKHNsOTuHvK3vKqL48Tyb+7iOM+J/+",
+    render_errors: [view: BandstockWeb.ErrorView, accepts: ~w(html json)],
+    pubsub: [name: Bandstock.PubSub,
+             adapter: Phoenix.PubSub.PG2],
+    http: [port: {:system, "PORT"}],
+    https: [port: 443,
+            otp_app: :bandstock,
+            keyfile: System.get_env("PRIVKEY_PEM"),
+            certfile: System.get_env("FULLCHAIN_PEM")
+            ]
+
 
 # Configures Elixir's Logger
 config :logger, :console,

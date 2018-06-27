@@ -1,5 +1,6 @@
 defmodule BandstockWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :bandstock
+  use Phoenix.Endpoint, otp_app: :bandstock,
+  force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
   socket "/socket", BandstockWeb.UserSocket
 
@@ -36,6 +37,10 @@ defmodule BandstockWeb.Endpoint do
     store: :cookie,
     key: "_bandstock_key",
     signing_salt: "vMhhlyz7"
+
+  plug Plug.Static,
+     at: "/", from: :bandstock, gzip: false,
+     only: ~w(css fonts images js favicon.ico robots.txt .well-known)
 
   plug BandstockWeb.Router
 
