@@ -16,7 +16,7 @@ config :bandstock,
     pubsub: [name: Bandstock.PubSub,
              adapter: Phoenix.PubSub.PG2],
     http: [port: {:system, "PORT"}],
-    https: [port: 443,
+    https: [port: {:system, "PORT"},
             otp_app: :bandstock,
             keyfile: System.get_env("PRIVKEY_PEM"),
             certfile: System.get_env("FULLCHAIN_PEM")
