@@ -33,7 +33,8 @@ defmodule BandstockWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-
+    get "/about", PageController, :about
+    
     get "/users", UserController, :index
     get "/users/new", UserController, :new
     post "/users", UserController, :create

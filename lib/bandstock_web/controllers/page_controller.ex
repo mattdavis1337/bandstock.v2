@@ -6,4 +6,11 @@ defmodule BandstockWeb.PageController do
   	#IO.inspect(Bandstock.GraphicMagic.magic)
     render conn, "index.html"
   end
+
+  def about(conn, _params) do
+
+    #IO.inspect(Bandstock.GraphicMagic.magic)
+    render conn, "about.html"
+  end
+
 end

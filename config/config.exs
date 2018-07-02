@@ -20,7 +20,13 @@ config :bandstock,
             otp_app: :bandstock,
             keyfile: System.get_env("PRIVKEY_PEM"),
             certfile: System.get_env("FULLCHAIN_PEM")
-            ]
+            ],
+    protocol_options: [
+      max_header_name_length: 64,
+      max_header_value_length: 8192,
+      max_headers: 100,
+      max_request_line_length: 8192
+    ]
 
 
 # Configures Elixir's Logger

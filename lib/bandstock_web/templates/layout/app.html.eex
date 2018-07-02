@@ -8,15 +8,19 @@
     <meta name="author" content="">
 
     <title>Bandstock</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gugi">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Gugi">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%= static_path(@conn, "/css/app.css") %>">
+
     <script src="<%= static_path(@conn, "/js/pixi.min.js") %>"></script>
     <script type="<%= static_path(@conn, "/js/config.js") %>"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/materialize.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/init.js") %>"></script>
   </head>
 
   <body class="black" onload="init()">
@@ -63,9 +67,7 @@
           </div>
         </div>
 
-
       </header>
-
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>

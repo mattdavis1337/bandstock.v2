@@ -8,13 +8,14 @@ defmodule BandstockWeb.AuthController do
 	#alias Bandstock.Conversation.ConversationServer
 
 	#handle information that comes back from authenticating site
-	def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
+	def callback(%{assigns: %{ueberauth_auth: auth}} = conn, %{"provider" => provider} = params) do
 
 		IO.puts("+++++auth callback++++");
-		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: "github"} #TODO change to provider from params
+		IO.inspect(params);
+		user_params = %{token: auth.credentials.token, email: auth.info.email, provider: provider} #TODO change to provider from params
 		#TODO add handle code , handle: Map.get(get_session(conn, :user_params), "handle")
 
-		changeset = User.changeset(%User{}, user_params)
+		changeset = User.changeset(%User{}, user_params);
 
 		IO.inspect(user_params)
 
