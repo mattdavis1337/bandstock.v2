@@ -3,7 +3,7 @@
 
 	let sprites = {}
 	let blues;
-	let scaling = .04;
+	let scaling = .0502;
 	let Application = PIXI.Application,
 				loader = PIXI.loader,
 				resources = PIXI.loader.resources,
@@ -15,34 +15,44 @@
 	function init(){
 
 		app = new Application({
-				width: 545,
-				height: 420,
+				width: 544,
+				height: 704,
 				antialias: true,
 				transparent: false,
 				resolution: 1
 			}
 		);
 
+
 		document.getElementById('game-board').appendChild(app.view);
+		var canvas = app.view;
+		canvas.style = "border:7px;border-style:outset;border-color:#787;margin:2px;padding:2px;";
+
+		var canvasWidth;
+    var ctx;
+
 		app.stop();
 
-
-		//Add the canvas that Pixi automatically created for you to the HTML document
-
-
-		//load an image and run the `setup` function when it's done
+//load an image and run the `setup` function when it's done
 		PIXI.loader
 			.add("/images/bandstockTileSheet2.png")
 			.add("spritesheet", "/images/bandstockTileSheet2.json")
 			.load(setup);
 	}
 
+
+	function resizeCanvas(canvas) {
+
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+	}
+
 	//This `setup` function will run when the image has loaded
 	function setup() {
 		let speed = 3;
 
-		var height = 20;
-		var width = 58;
+		var height = 32;
+		var width = 32;
 
 		var totalWidth = 545;
 		var totalHeight = 420;
@@ -53,73 +63,47 @@
 		}
 
 		var colors = new Array(width);
-		colors[0] = "yellow";
-		colors[1] = "purple";
-		colors[2] = "green";
-		colors[3] = "purple";
-		colors[4] = "blue";
-		colors[5] = "teal";
-		colors[6] = "blue";
-		colors[7] = "purple";
-		colors[8] = "green";
-		colors[9] = "purple";
-		colors[10] = "blue";
-		colors[11] = "teal";
-		colors[12] = "blue";
-		colors[13] = "purple";
-		colors[14] = "green";
-		colors[15] = "purple";
-		colors[16] = "purple";
-		colors[17] = "yellow";
-		colors[18] = "orange";
+		colors[0] = "red";
+		colors[1] = "red";
+		colors[2] = "red";
+		colors[3] = "red";
+		colors[4] = "red";
+		colors[5] = "red";
+		colors[6] = "red";
+		colors[7] = "red";
+		colors[8] = "red";
+		colors[9] = "red";
+		colors[10] = "red";
+		colors[11] = "red";
+		colors[12] = "red";
+		colors[13] = "red";
+		colors[14] = "red";
+		colors[15] = "red";
+		colors[16] = "red";
+		colors[17] = "red";
+		colors[18] = "red";
 		colors[19] = "red";
-		colors[20] = "magenta";
+		colors[20] = "red";
 		colors[21] = "red";
-		colors[22] = "orange";
-		colors[23] = "yellow";
-		colors[24] = "purple";
-		colors[25] = "green";
-		colors[26] = "purple";
-		colors[27] = "blue";
-		colors[28] = "teal";
-		colors[29] = "blue";
-		colors[30] = "purple";
-		colors[31] = "green";
-		colors[32] = "purple";
-		colors[33] = "blue";
-		colors[34] = "teal";
-		colors[35] = "blue";
-		colors[36] = "green";
-		colors[37] = "purple";
-		colors[38] = "yellow";
-		colors[39] = "yellow";
+		colors[22] = "red";
+		colors[23] = "red";
+		colors[24] = "red";
+		colors[25] = "red";
+		colors[26] = "red";
+		colors[27] = "red";
+		colors[28] = "red";
+		colors[29] = "red";
+		colors[30] = "red";
+		colors[31] = "red";
+		colors[32] = "red";
 
-
-
-		colors[40] = "blue";
-		colors[41] = "teal";
-		colors[42] = "blue";
-		colors[43] = "purple";
-		colors[44] = "green";
-		colors[45] = "purple";
-		colors[46] = "blue";
-		colors[47] = "teal";
-		colors[48] = "blue";
-		colors[49] = "purple";
-		colors[50] = "green";
-		colors[51] = "purple";
-		colors[52] = "blue";
-		colors[53] = "teal";
-		colors[54] = "blue";
-		colors[55] = "purple";
-		colors[56] = "green";
-		colors[57] = "purple";
-		colors[58] = "yellow";
 
 		for(var i = 0; i < colors.length; i++){
 			for(var j = 0; j < height; j++){
 				cur_sprite = sprites[i][j] = load_tile(colors[i], 5);
-				init_sprite_animation(cur_sprite, speed*(j+i+1)/width);
+				var tileSpeed = speed*(((j*i)+2)/75);
+				console.log(tileSpeed);
+				init_sprite_animation(cur_sprite, tileSpeed);
 				cur_sprite.x = (i*cur_sprite.width+cur_sprite.width/2)+i*2;
 				cur_sprite.y = cur_sprite.height/2 + j*cur_sprite.height + j*2;
 				cur_sprite.play();
@@ -158,7 +142,7 @@
 
 </script>
 
-<div id="game-board" class="jumbotron black col-lg-12" style="padding-top:0px">
-	<img style="padding-bottom:75px" width="100%" src="<%= static_path(@conn, "/images/logo2.png") %>">
+<div id="game-board" width="100%" class="jumbotron black col-lg-12" style="padding-top:0px">
+		<img style="padding-bottom:75px" width="100%" src="<%= static_path(@conn, "/images/logo2.png") %>">
 
 </div>

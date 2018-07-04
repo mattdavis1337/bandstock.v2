@@ -40,7 +40,7 @@
           <div class="col s1 red red-text accent-4 text-accent-4 center-align">~</div>
           <div class="col s1 pink pink-text accent-4 text-accent-4 center-align">.</div>
 
-          <div class="col s12 black accent-4 right">
+          <div class="col s12 black accent-4 right" style="padding-top:10px;">
             <ul class="left">
               <li class="yellow-text text-accent-4" role="alert"><%= get_flash(@conn, :info) %></li>
               <li class="" role="alert"><%= get_flash(@conn, :error) %></li>
@@ -48,13 +48,24 @@
             <ul class="right">
               <%= if @conn.assigns[:user] do %>
                 <li>
+                  <a href="<%= page_path(@conn, :about)%>">
+                    <img  src="<%= static_path(@conn, "/images/icons/qmark.png") %>">
+                  </a>
                   <%= link "Sign Out", to: auth_path(@conn, :signout), class: "yellow-text text-accent-4" %>
                 </li>
               <% else %>
                 <li>
-                  <a href="<%= auth_path(@conn, :request, "facebook")%>">
-                    <img  src="<%= static_path(@conn, "/images/icons/key1.png") %>">
-                  </a>
+                  <!---  --->
+                  <span style="padding:5px">
+                    <a href="<%= page_path(@conn, :about)%>">
+                      <img  src="<%= static_path(@conn, "/images/icons/qmark.png") %>">
+                    </a>
+                  </span>
+                  <span style="padding:5px">
+                    <a href="<%= auth_path(@conn, :request, "facebook")%>">
+                      <img  src="<%= static_path(@conn, "/images/icons/key1.png") %>">
+                    </a>
+                </span>
                 </li>
               <% end %>
             </ul>

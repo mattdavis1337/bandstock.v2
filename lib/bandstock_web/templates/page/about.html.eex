@@ -1,60 +1,23 @@
 <!DOCTYPE html>
 
-<div class="section no-pad-bot">
-  <div class="container press-start center red-text text-lighten-1 blink-me">
-  <p>Buy Red Founder Cards Here</p>
-  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="hosted_button_id" value="P7GVD6AKEQWYJ">
-    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-  </form>
-</div>
-</div>
 
-<div id="index-banner" class="parallax-container">
+
+
+
+
   <div class="section no-pad-bot">
     <div class="container press-start center">
+      <div class="vid-container">
+        <iframe src="https://player.vimeo.com/video/277913990" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
       <br />
-      <!---
-      <h1 class="center strong orange-text text-lighten-4 hide-on-med-and-down">Visit</h1><br>
-      <h2 class="center strong orange-text text-lighten-4 hide-on-med-and-down">bandstock.net/about</h2><br>
-      <h2 class="center strong orange-text text-lighten-4 hide-on-med-and-down">for more information</h2><br>
-     --->
-
-     <iframe src="https://player.vimeo.com/video/277913990" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-<p><a href="https://vimeo.com/277913990">Bandstock Fundraiser Video</a> from <a href="https://vimeo.com/user81683981">Matt Davis</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-
-
-
-<!---
-      <h1 class="center strong orange-text text-lighten-4 hide-on-med-and-down">Bandstock is being developed</h1><br>
-      <div class="row center hide-on-med-and-down" style="padding-right:25px;padding-left:25px;">
-         <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">The first crowdfunding video game is being crowdfunded.</h5>
-         <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold"></h5>
-         <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">100 limited edition Red Founder Cards available now</h5>
-         <h3 class="col s12 red-text text-lighten-4" style="font-weight:bold">Keep them, trade them, gift them.  </h3>
-         <h3 class="col s12 red-text text-lighten-4" style="font-weight:bold">bandstock.net/about for more information</h3>
-
-      </div>
-      <div class="row center hide-on-large-only">
-         <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">"The crowdfunding video game."</h5>
-         <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">"Like Pokemon Cards and Band Stickers combined" </h5>
-         <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">"When I collect Bandstock Cards at live shows, the band knows I was there."</h5>
-         <h4 class="col s12 red-text text-lighten-4" style="font-weight:bold">94/100 Red Founder Cards remaining. Buy now.</h5>
-
-      </div>
-      -->
     </div>
-
   </div>
-  <div class="parallax"><img  class="responsive-img" src="images/slotsBackground.png" alt="Warm Background"></div>
-</div>
 
 
 
 
-    <div id="index-banner" class="parallax-container">
+
       <div class="section no-pad-bot">
         <div class="container press-start center">
           <br />
@@ -67,27 +30,57 @@
          <iframe src="https://player.vimeo.com/video/277913990" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <p><a href="https://vimeo.com/277913990">Bandstock Fundraiser Video</a> from <a href="https://vimeo.com/user81683981">Matt Davis</a> on <a href="https://vimeo.com">Vimeo</a>.</p>--->
 
-          <h1 class="center strong orange-text text-lighten-4 hide-on-med-and-down">Bandstock is being developed</h1><br>
+           <!---<h1 class="center strong orange-text text-lighten-4">Bandstock is being developed</h1><br> -->
           <div class="row center hide-on-med-and-down" style="padding-right:25px;padding-left:25px;">
-             <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">The first crowdfunding video game is being crowdfunded.</h5>
+             <!---
+             <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">The first crowdfunding video game is crowdfunding itself.</h5>
              <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold"></h5>
-             <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">100 limited edition Red Founder Cards available now</h5>
-             <h3 class="col s12 red-text text-lighten-4" style="font-weight:bold">Keep them, trade them, gift them.  </h3>
-             <h3 class="col s12 red-text text-lighten-4" style="font-weight:bold">bandstock.net/about for more information</h3>
+             --->
+             <h3 class="col s12 orange-text text-lighten-4" style="font-weight:bold">1024 limited edition <span class="red-text">RED FOUNDER CARDS</span> available now</h5>
+             <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+               <input type="hidden" name="cmd" value="_s-xclick">
+               <input type="hidden" name="hosted_button_id" value="P7GVD6AKEQWYJ">
+               <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+               <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+             </form>
+
+             <h5 class="col s12 red-text text-lighten-4" style="font-weight:bold">When Bandstock launches you will receive limited edition collector cards.</h3>
+             <h5 class="col s12 red-text text-lighten-4" style="font-weight:bold">Keep them, trade them, gift them.  </h3>
+             <h5 class="col s12 red-text text-lighten-4" style="font-weight:bold">email: bandstock5000@gmail.com</h3>
 
           </div>
           <div class="row center hide-on-large-only">
-             <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">"The crowdfunding video game."</h5>
-             <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">"Like Pokemon Cards and Band Stickers combined" </h5>
-             <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">"When I collect Bandstock Cards at live shows, the band knows I was there."</h5>
-             <h4 class="col s12 red-text text-lighten-4" style="font-weight:bold">94/100 Red Founder Cards remaining. Buy now.</h5>
+          <!---  <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">The first crowdfunding video game is crowdfunding itself.</h5>
+            <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold"></h5>
+            --->
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="hidden" name="cmd" value="_s-xclick">
+              <input type="hidden" name="hosted_button_id" value="P7GVD6AKEQWYJ">
+              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+              <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+            <h5 class="col s12 orange-text text-lighten-4" style="font-weight:bold">1024 limited edition <span class="red-text">RED FOUNDER CARDS</span> available now</h5>
+            <h3 class="col s12 red-text text-lighten-4" style="font-weight:bold">When Bandstock launches you will receive limited edition collector cards.</h3>
+            <h3 class="col s12 red-text text-lighten-4" style="font-weight:bold">Keep them, trade them, gift them.  </h3>
+            <h3 class="col s12 red-text text-lighten-4" style="font-weight:bold">email: bandstock5000@gmail.com</h3>
 
           </div>
         </div>
 
       </div>
-      <div class="parallax"><img  class="responsive-img" src="images/slotsBackground.png" alt="Warm Background"></div>
+
+    <!---  <div class="section no-pad-bot">
+        <div class="container press-start center red-text text-lighten-1 blink-me">
+        <p>Buy Red Founder Cards Here</p>
+        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <input type="hidden" name="hosted_button_id" value="P7GVD6AKEQWYJ">
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+      </div>
     </div>
+
 
     <div class="section no-pad-bot">
       <div class="container press-start center red-text text-lighten-1 blink-me">
@@ -99,4 +92,6 @@
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
       </form>
     </div>
+
+    -->
     </div>
