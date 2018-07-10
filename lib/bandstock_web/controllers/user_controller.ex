@@ -19,7 +19,7 @@ defmodule BandstockWeb.UserController do
 
   def create(conn, %{"user" => user_params}) do
     case Account.create_user(user_params) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:info, "User created successfully.")
         |> redirect(to: page_path(conn, :index))
@@ -48,7 +48,7 @@ defmodule BandstockWeb.UserController do
     render(conn, "edit.html", user: user, changeset: changeset)
   end
 
-  def update_handle(conn, params) do
+  def update_handle(conn, _params) do
     #%{"handle" => handle, "email" => email}
 
     user_id = get_session(conn, :user_id)
@@ -62,7 +62,7 @@ defmodule BandstockWeb.UserController do
     user = Account.get_user!(id)
 
     case Account.update_user(user, user_params) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
         |> redirect(to: page_path(conn, :index))
