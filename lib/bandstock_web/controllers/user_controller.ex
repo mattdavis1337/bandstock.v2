@@ -6,6 +6,7 @@ defmodule BandstockWeb.UserController do
   alias Bandstock.Repo
 
   plug BandstockWeb.Plugs.RequireAuth when action in[:new, :show, :edit, :update, :delete, :update_handle]
+  #action_fallback BandstockWeb.FallbackController
 
   def index(conn, _params) do
     users = Account.list_users()

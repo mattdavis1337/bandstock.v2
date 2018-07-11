@@ -7,7 +7,7 @@ defmodule Bandstock.Game.Card do
     field :hash, :string
     field :image, :string
     field :name, :string
-
+    many_to_many :boards, Bandstock.Game.Board, join_through: "cards_boards"
     timestamps()
   end
 

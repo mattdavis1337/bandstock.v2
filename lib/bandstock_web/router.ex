@@ -1,6 +1,8 @@
 defmodule BandstockWeb.Router do
   use BandstockWeb, :router
 
+  alias BandstockWeb.BoardController
+
   pipeline :browser_nouser do
       plug :accepts, ["html"]
       plug :fetch_session
@@ -29,6 +31,8 @@ defmodule BandstockWeb.Router do
 
   #end
 
+  resources "/boards", BoardController, except: [:new, :edit]
+
   scope "/", BandstockWeb do
     pipe_through :browser_nouser # Use the default browser stack
 
@@ -37,6 +41,19 @@ defmodule BandstockWeb.Router do
     get "/signout", AuthController, :signout
     get "/sold_out", PageController, :about
     get "/red_founder", PageController, :about
+  end
+
+  scope "/admin", BandstockWeb do
+    get "/", UserController, :admin
+  end
+
+
+    #get "/boards", BoardController, :index
+#     board_path  GET     /boards/:id               BoardController :show
+#     board_path  POST    /boards                   BoardController :create
+# board_path  PATCH   /boards/:id               BoardController :update
+#             PUT     /boards/:id               BoardController :update
+# board_path  DELETE  /boards/:id               BoardController :delete
 
     #get "/users", UserController, :index
     #get "/users/new", UserController, :new
@@ -46,6 +63,11 @@ defmodule BandstockWeb.Router do
     #get "/users/:id", UserController, :show
     #delete "/users/:id", UserController, :delete
     #put "/users/:id", UserController, :update
+
+
+  scope "/board/", BandstockWeb do
+    get "/link", BoardController, :link
+
   end
 
   scope "/auth", BandstockWeb do

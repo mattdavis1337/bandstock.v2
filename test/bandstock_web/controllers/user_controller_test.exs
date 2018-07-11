@@ -12,6 +12,7 @@ defmodule BandstockWeb.UserControllerTest do
     user
   end
 
+
   describe "register" do
     test "Register new user", %{conn: _conn} do
       #conn = get conn, auth_path(conn, :register, "facebook")
