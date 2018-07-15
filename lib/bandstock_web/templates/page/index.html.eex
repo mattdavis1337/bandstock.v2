@@ -117,83 +117,22 @@
 			for(var j = 0; j < height; j++){
 				cur_sprite = sprites[i][j] = load_tile(colors[i], 5);
 				var tileSpeed = speed*(((j*i)+2)/75);
-
+				console.log(tileSpeed);
 				init_sprite_animation(cur_sprite, tileSpeed);
-
-				var width = 30; //cur_sprite.width
-				var height = 40; //cur_sprite.height
-
-				cur_sprite.x = (i*width+width/2)+i*2;
-				cur_sprite.y = height/2 + j*height + j*2;
-
+				cur_sprite.x = (i*cur_sprite.width+cur_sprite.width/2)+i*2;
+				cur_sprite.y = cur_sprite.height/2 + j*cur_sprite.height + j*2;
 				cur_sprite.play();
 			}
 		}
 
+
 		for(var i = 0; i < colors.length; i++){
 			for(var j = 0; j< height; j++){
-
-				//app.stage.addChild(sprites[i][j]);
-				app.stage.addChild(doHover(sprites[i][j].x, sprites[i][j].y, 30, 40));
-
+				app.stage.addChild(sprites[i][j]);
 			}
 		}
 
-
-
 		app.start();
-	}
-
-	function doHover(x, y, width, height){
-
-		var shape = new PIXI.Graphics();
-		//shape.lineStyle(5, 0xFFFFFF, 1);
-		shape.beginFill(0x0000FF, 1);
-		shape.drawRect(x, y, width, height);
-		shape.endFill();
-
-
-		//shape = new PIXI.Rectangle(x, y, width, height);
-		shape.alpha = 0.5;
-		// designate circle as being interactive so it handles events
-		shape.interactive = true;
-
-		// create hit area, needed for interactivity
-		//shape.hitArea = new PIXI.Rectangle(x, y, width, height);
-
-		// make circle non-transparent when mouse is over it
-		shape.mouseover = function(mouseData) {
-  		this.alpha = 1;
-		}
-
-		// make circle half-transparent when mouse leaves
-		shape.mouseout = function(mouseData) {
-		  this.alpha = 0.5;
-		}
-
-		return shape;
-
-
-		// spriteIn.interactive = true;
-		//
-		// // create hit area, needed for interactivity
-		// spriteIn.hitArea = new PIXI.Rectangle(spriteIn.x, spriteIn.y, spriteIn.width, spriteIn.height);
-		//
-		// // make circle non-transparent when mouse is over it
-		// spriteIn.mouseover = function(mouseData) {
-		// 	console.log("mousein");
-		// 	console.log(mouseData);
-		// 	console.log(this.x + "," + this.y);
-		// 	this.alpha = .2;
-		// }
-		//
-		// // make circle half-transparent when mouse leaves
-		// spriteIn.mouseout = function(mouseData) {
-		// 	console.log("mouseout");
-		// 	this.alpha = 0.7;
-		// }
-		//
-		// return spriteIn;
 	}
 
 	function load_tile(color, frame_count){
@@ -212,13 +151,15 @@
 	function init_sprite_animation(sprite, speedIn){
 		sprite.animationSpeed = speedIn;
 		sprite.anchor.set(0.5);
-		//sprite.scale.set(scaling);
+		sprite.scale.set(scaling);
 		return sprite;
 	}
 
 </script>
 
 <div id="game-board" width="100%" class="jumbotron black col-lg-12" style="padding-top:0px">
-		<img style="padding-bottom:75px" width="100%" src="<%= static_path(@conn, "/images/logo2.png") %>">
+		<p class="press-start red-text accent-4 text-accent-4" style="font-size:.8em">The Red Founder Cards</p>
+</div>
+<div>
 
 </div>

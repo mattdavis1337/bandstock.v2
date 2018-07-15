@@ -90,6 +90,9 @@
               <% end %>
             </ul>
           </div>
+          <div>
+            		<img style="padding-bottom:75px" width="100%" src="<%= static_path(@conn, "/images/logo2.png") %>">
+          </div>
         </div>
       </header>
       <main role="main">
