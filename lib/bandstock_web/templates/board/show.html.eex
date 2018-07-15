@@ -1,0 +1,15 @@
+<h2 class="center white-text">Show board</h2>
+
+
+<ul>
+
+  <li>
+    <h3 class="white-text">Hash: <%= @board.hash %></h2>
+    <h3 class="white-text">Name: <%= @board.name %></h2>
+    <h3 class="teal-text">Cards:</h2>
+      <%= for card <- @board.cards do %>
+        <h4 class="teal-text">Card hash: <%= card.hash %></p></h4>
+        <h4 class="teal-text">Card name: <%= card.name %></p></h4>
+      <% end %>
+  </li>
+</ul>

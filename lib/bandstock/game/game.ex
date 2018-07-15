@@ -148,6 +148,10 @@ defmodule Bandstock.Game do
 
   """
   def create_board(attrs \\ %{}) do
+    IO.inspect(attrs)
+    #{gridwidth} = board_params;
+    #Enum.each(0..board_params.gridwidth, &(IO.puts(&1)))
+
     %Board{}
     |> Board.changeset(attrs)
     |> Repo.insert()

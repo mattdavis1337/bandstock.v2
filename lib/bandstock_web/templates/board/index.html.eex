@@ -1,0 +1,24 @@
+<h2 class="center white-text">Show boards</h2>
+
+
+<ul>
+  <%= for board <- @boards do %>
+    <li>
+      <h3 class="white-text">Board Name: <%= board.name %></h2>
+      <h3 class="white-text">Hash: <%= board.hash %></h2>
+
+      <h3 class="teal-text">Cards:</h2>
+        <%= for card <- board.cards do %>
+          <h4 class="teal-text">Card name: <%= card.name %></p></h4>
+          <h4 class="teal-text">hash: <%= card.hash %></p></h4>
+        <% end %>
+        <%= if length(board.cards) == 0 do %>
+          <h4 class="teal-text">No cards</h4>
+        <% end %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+<%= link "New Board", to: board_path(@conn, :new) %>

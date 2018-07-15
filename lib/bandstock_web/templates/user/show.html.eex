@@ -1,0 +1,16 @@
+<h2 class="center white-text">Show user</h2>
+
+<div class="center white-text">
+  <ul>
+    <li>
+      <strong>Email: </strong><%= @user.email %>
+    </li>
+  </ul>
+</div>
+
+
+<%= if @user.admin do %>
+  <h4 class="center purple-text"><%= link "create new board", to: board_path(@conn, :new) %></h2>
+
+  <h4 class="center purple-text"><a class="purple-text">show all boards</a></h2>
+<% end %>

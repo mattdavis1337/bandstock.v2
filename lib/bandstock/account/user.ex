@@ -8,7 +8,7 @@ defmodule Bandstock.Account.User do
     field :handle, :string
     field :provider, :string
     field :token, :string
-
+    field :admin, :boolean
     timestamps()
   end
 

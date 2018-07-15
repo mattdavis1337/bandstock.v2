@@ -1,7 +1,6 @@
 defmodule BandstockWeb.Router do
   use BandstockWeb, :router
 
-  alias BandstockWeb.BoardController
 
   pipeline :browser_nouser do
       plug :accepts, ["html"]
@@ -31,7 +30,7 @@ defmodule BandstockWeb.Router do
 
   #end
 
-  resources "/boards", BoardController, except: [:new, :edit]
+
 
   scope "/", BandstockWeb do
     pipe_through :browser_nouser # Use the default browser stack
@@ -41,7 +40,17 @@ defmodule BandstockWeb.Router do
     get "/signout", AuthController, :signout
     get "/sold_out", PageController, :about
     get "/red_founder", PageController, :about
+
+    get "/users", UserController, :index
+    get "/users/:id", UserController, :show
+
+    get "/boards/new", BoardController, :new
+    get "/boards", BoardController, :index
+    post "/boards", BoardController, :create
+    get "/boards/:id", BoardController, :show
   end
+
+  #resources "/boards", BoardController, except: [:new, :edit]
 
   scope "/admin", BandstockWeb do
     get "/", UserController, :admin
