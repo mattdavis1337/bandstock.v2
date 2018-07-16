@@ -1,22 +1,8 @@
 # Bandstock
 
-To start your Phoenix server:
+Site is live at www.bandstock.net
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+Bandstock is a tool for musicians and fans of live music to help them connect in a meaningful way at shows. It uses card collection game mechanics to encourage fans to collect cards distributed digitally by musicians at live shows.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+This app is in development.  Learn more at bandstock.net/about
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
-# bandstock.v2
-# bandstock.v2
