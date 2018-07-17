@@ -40,6 +40,7 @@ defmodule BandstockWeb.Router do
     get "/signout", AuthController, :signout
     get "/sold_out", PageController, :about
     get "/red_founder", PageController, :about
+    get "/canceled", PageController, :about
 
     get "/users", UserController, :index
     get "/users/:id", UserController, :show
